@@ -2,7 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black min-h-screen">
+    <div className="relative flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black min-h-screen">
+      <Link
+        href="/overview"
+        className="absolute top-6 right-6 text-sm text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-lg px-4 py-2 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-colors"
+      >
+        プラグイン解説 →
+      </Link>
       <main className="flex flex-col items-center gap-12 py-24 px-8 w-full max-w-5xl">
         <h1 className="text-4xl font-bold text-black dark:text-white text-center">
           Frontend Design Plugin テスト
