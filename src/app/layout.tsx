@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Claude Code Lab",
   description: "Claude Codeのプラグイン・機能を比較検証するナレッジ共有サイト",
+  icons: {
+    icon: "/icon.webp",
+  },
 };
 
 export default function RootLayout({
