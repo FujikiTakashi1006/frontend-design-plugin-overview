@@ -13,12 +13,30 @@ type Article = {
   author: string;
 };
 
+function isNew(dateStr: string) {
+  const d = new Date(dateStr.replace(/\//g, "-"));
+  const now = new Date();
+  const diff = now.getTime() - d.getTime();
+  return diff < 7 * 24 * 60 * 60 * 1000;
+}
+
 const categories = [
   { id: "plugin", label: "Plugin" },
+  { id: "skill", label: "Skill" },
   { id: "guide", label: "Guide" },
 ];
 
 const articles: Article[] = [
+  {
+    category: "skill",
+    tag: "Skill",
+    title: "Website Clone Skill",
+    description:
+      "Claude CodeのSkill機能でWebサイトを自動クローン。S3 Seismicのサイトをピクセルパーフェクトに再現したデモ。",
+    href: "/s3seismic",
+    date: "2026/3/30",
+    author: "藤木崇史",
+  },
   {
     category: "plugin",
     tag: "Plugin",
@@ -26,7 +44,7 @@ const articles: Article[] = [
     description:
       "プラグインあり・なしでIT企業HPの品質差を比較。同じプロンプトから生成されたページのデザイン品質を検証する。",
     href: "/comparison",
-    date: "2025年3月",
+    date: "2026/3/20",
     author: "藤木崇史",
   },
   {
@@ -36,7 +54,7 @@ const articles: Article[] = [
     description:
       "Claude Codeプラグインの導入方法・設定・活用事例をまとめた包括的ガイド。",
     href: "/overview",
-    date: "2025年3月",
+    date: "2026/3/20",
     author: "藤木崇史",
   },
 ];
@@ -196,6 +214,20 @@ export default function Home() {
           font-weight: 500;
         }
 
+        .hub-new {
+          font-family: 'DM Mono', monospace;
+          font-size: 0.55rem;
+          font-weight: 700;
+          color: #fff;
+          background: var(--accent);
+          border-radius: 3px;
+          padding: 0.15rem 0.4rem;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          display: inline-block;
+          width: fit-content;
+        }
+
         .hub-article-title {
           font-size: 1.3rem;
           font-weight: 600;
@@ -327,10 +359,12 @@ export default function Home() {
                 style={{ transitionDelay: `${100 + i * 60}ms` }}
               >
                 <div className="hub-article-body">
-                  <div className="hub-article-source">{a.tag}</div>
+                  {isNew(a.date) && <span className="hub-new">NEW</span>}
                   <div className="hub-article-title">{a.title}</div>
                   <div className="hub-article-desc">{a.description}</div>
                   <div className="hub-article-meta">
+                    <div className="hub-article-source">{a.tag}</div>
+                    <span className="hub-article-meta-dot" />
                     <span>{a.author}</span>
                     <span className="hub-article-meta-dot" />
                     <span>{a.date}</span>
