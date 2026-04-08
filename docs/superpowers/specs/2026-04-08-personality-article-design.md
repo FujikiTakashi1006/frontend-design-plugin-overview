@@ -49,7 +49,7 @@
 **Google Fonts import:**
 - Playfair Display (400, 400i)
 - Cormorant Garamond (400, 600)
-- Noto Sans JP (300, 400, 500, 700)
+- Noto Sans JP (300, 400, 500)
 
 ---
 
