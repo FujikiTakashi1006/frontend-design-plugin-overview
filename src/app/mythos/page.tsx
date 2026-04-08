@@ -284,7 +284,7 @@ function ModelEvolution() {
     // 2. Draw arrow → fade in next node → repeat
     // 3. Final Mythos node gets special glow treatment
     const nodes = svg.querySelectorAll<SVGGElement>(".evo-node");
-    const arrows = svg.querySelectorAll<SVGPathElement>(".evo-arrow");
+    const arrows = svg.querySelectorAll<SVGLineElement>(".evo-arrow");
     const glowEl = svg.querySelector(".evo-glow");
 
     // Stagger: node → arrow → node → arrow → node → arrow → node
@@ -303,7 +303,9 @@ function ModelEvolution() {
       // Arrow draws after node (except last)
       if (i < arrows.length) {
         const arrow = arrows[i];
-        const len = arrow.getTotalLength();
+        const x1 = parseFloat(arrow.getAttribute("x1") || "0");
+        const x2 = parseFloat(arrow.getAttribute("x2") || "0");
+        const len = Math.abs(x2 - x1);
         arrow.style.strokeDasharray = `${len}`;
         arrow.style.strokeDashoffset = `${len}`;
         animate(arrow, {
@@ -356,17 +358,14 @@ function ModelEvolution() {
           const next = models[i + 1];
           const startX = m.x + sizes[m.size] + 12;
           const endX = next.x - sizes[next.size] - 12;
-          const midX = (startX + endX) / 2;
           return (
-            <path
+            <line
               key={`arrow-${i}`}
               className="evo-arrow"
-              d={`M${startX},65 C${midX},50 ${midX},80 ${endX},65`}
-              fill="none"
+              x1={startX} y1={65} x2={endX} y2={65}
               stroke={i === 2 ? "#f59e0b" : "#444"}
               strokeWidth={i === 2 ? 2 : 1.5}
               opacity={0.6}
-              markerEnd={i === 2 ? undefined : undefined}
             />
           );
         })}
@@ -661,7 +660,6 @@ export default function MythosPage() {
                     <div className="my-bench-name">{b.name}</div>
                     <div className="my-bench-desc">{b.desc}</div>
                   </div>
-                  {b.mythos !== null && b.max === 100 && <BenchmarkGauge score={b.mythos} label="Mythos" />}
                 </div>
                 <div className="my-bars">
                   <Bar value={b.opus} max={b.max} label="Opus 4.6" displayValue={`${b.opus}${b.suffix}`} variant="opus" />
