@@ -152,6 +152,51 @@ function Section03() {
   );
 }
 
+/* ─── Section 04: 同調圧力 ─── */
+function Section04() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">04</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">「流されやすい」のは弱さじゃない。<br />生存本能だ。</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 140" role="img" aria-label="同調圧力の波：整列するドットと、外れたドットにERRORシグナルが点滅">
+            <path className="wave-line w1" d="M10,40 Q50,30 100,40 Q150,50 190,40" />
+            <path className="wave-line w2" d="M10,70 Q50,60 100,70 Q150,80 190,70" />
+            <path className="wave-line w3" d="M10,100 Q50,90 100,100 Q150,110 190,100" />
+            {[[30,38],[60,35],[90,40],[120,43],[150,40]].map(([cx,cy], i) => (
+              <circle key={i} className="conformity-dot" cx={cx} cy={cy} r={3}
+                style={{ animationDelay: `${0.8 + i * 0.2}s` }} />
+            ))}
+            <circle className="outlier" cx={170} cy={20} r={4} />
+            <circle className="error-signal" cx={170} cy={20} r={12} />
+            <text className="error-text" fontFamily="'Noto Sans JP', sans-serif" fontSize={7} x={170} y={10} textAnchor="middle">ERROR</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>「自分は自分」「人に流されるな」——よく聞く言葉ですが、進化の観点からは、これは非常に不自然な要求です。</p></R>
+        <R ok={ok} d={280}><p>人類の進化の大半は、小さな集団での生活でした。集団から追放されること＝死を意味する環境で、何万年も生きてきた。</p></R>
+        <R ok={ok} d={320}><p>その結果、人間の脳には2つの強力な装置が組み込まれました。</p></R>
+        <R ok={ok} d={360}><p><strong>装置①：自動模倣システム</strong></p></R>
+        <R ok={ok} d={400}><p>人間には「過剰模倣」と呼ばれる特性があります。他の霊長類は「目的に必要な行動」だけを真似しますが、人間は意味のない動作まで忠実にコピーします。</p></R>
+        <R ok={ok} d={440}><p>周りの人の口癖がうつる。一緒にいる人の食生活に似てくる。パートナーの趣味に影響される。これらは「意志が弱い」のではなく、脳の模倣システムが正常に動作しているだけです。</p></R>
+        <R ok={ok} d={480}><p><strong>装置②：同調エラー検出システム</strong></p></R>
+        <R ok={ok} d={520}><p>脳画像研究（Klucharev et al., 2009）は驚くべき発見をしました。自分の意見が集団の多数派とズレたとき、脳はそれを「エラー」として処理するのです。</p></R>
+        <R ok={ok} d={560}><p>計算間違いをしたときと同じ脳の領域が活性化する。つまり脳にとって、<strong>みんなと違うこと＝間違い</strong>なのです。</p></R>
+        <R ok={ok} d={600}><p>これは原始時代の生存戦略としては合理的でした。集団の行動規範から外れること＝追放リスク＝生命の危機だったからです。</p></R>
+        <R ok={ok} d={640}><p>現代ではこの装置が必ずしも有利に働くとは限りません。しかし重要なのは、<strong>この仕組みは意志の力でオフにできない</strong>ということです。</p></R>
+      </div>
+      <R ok={ok} d={720}>
+        <div className="section-point">
+          <p>あなたが周りに影響されるのは、性格の問題ではありません。数万年の進化が組み込んだ、生存のためのハードウェアです。問題は「影響されること」ではなく、「何に影響されているか」です。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -435,6 +480,24 @@ export default function PersonalityPage() {
         .ifthen-label { opacity: 0; }
         .svg-animate.visible .ifthen-label { animation: fadeIn 0.8s ease 2.8s forwards; }
 
+        /* ─── Section 04 SVG Classes ─── */
+        .wave-line { fill: none; stroke: var(--accent-light); stroke-width: 1; opacity: 0; }
+        .svg-animate.visible .wave-line.w1 { animation: waveIn 1.5s ease 0.3s forwards; }
+        .svg-animate.visible .wave-line.w2 { animation: waveIn 1.5s ease 0.8s forwards; }
+        .svg-animate.visible .wave-line.w3 { animation: waveIn 1.5s ease 1.3s forwards; }
+        @keyframes waveIn { to { opacity: 0.5; } }
+        .conformity-dot { fill: var(--accent); opacity: 0; }
+        .svg-animate.visible .conformity-dot { animation: dotAlign 0.5s ease forwards; }
+        @keyframes dotAlign { to { opacity: 0.7; } }
+        .outlier { fill: var(--error); opacity: 0; }
+        .svg-animate.visible .outlier { animation: outlierPulse 2s ease-in-out 2s infinite; }
+        @keyframes outlierPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+        .error-signal { stroke: var(--error); stroke-width: 0.8; fill: none; opacity: 0; stroke-dasharray: 3 2; }
+        .svg-animate.visible .error-signal { animation: errorFlash 1.5s ease 2.5s infinite; }
+        @keyframes errorFlash { 0%,100% { opacity: 0; } 50% { opacity: 0.6; } }
+        .error-text { fill: var(--error); opacity: 0; }
+        .svg-animate.visible .error-text { animation: fadeIn 0.6s ease 2.5s forwards; }
+
         /* ─── Responsive ─── */
         @media (max-width: 640px) {
           .section { padding: 48px 16px; }
@@ -494,6 +557,7 @@ export default function PersonalityPage() {
       <Section01 />
       <Section02 />
       <Section03 />
+      <Section04 />
     </main>
   );
 }
