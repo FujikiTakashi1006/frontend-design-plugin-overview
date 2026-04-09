@@ -96,6 +96,62 @@ function Section02() {
   );
 }
 
+/* ─── Section 03: if-thenペルソナ ─── */
+function Section03() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">03</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">あなたの「キャラ」は、<br />場面ごとに自動で切り替わっている</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 140" role="img" aria-label="3つのペルソナマスク：上司の前では真面目、友人の前では笑顔、初対面では慎重">
+            <g className="mask-group m1">
+              <circle className="mask-face" cx={40} cy={55} r={22} />
+              <line className="mask-expression" x1={32} y1={50} x2={37} y2={49} />
+              <line className="mask-expression" x1={43} y1={49} x2={48} y2={50} />
+              <line className="mask-expression" x1={34} y1={63} x2={46} y2={63} />
+              <text className="mask-label" x={40} y={88} textAnchor="middle">上司の前</text>
+            </g>
+            <g className="mask-group m2">
+              <circle className="mask-face" cx={100} cy={55} r={22} />
+              <circle cx={93} cy={50} r={2} fill="none" stroke="var(--accent)" strokeWidth={1.2} />
+              <circle cx={107} cy={50} r={2} fill="none" stroke="var(--accent)" strokeWidth={1.2} />
+              <path className="mask-expression" d="M91,60 Q100,70 109,60" />
+              <text className="mask-label" x={100} y={88} textAnchor="middle">友人の前</text>
+            </g>
+            <g className="mask-group m3">
+              <circle className="mask-face" cx={160} cy={55} r={22} />
+              <line className="mask-expression" x1={152} y1={50} x2={158} y2={50} />
+              <line className="mask-expression" x1={162} y1={50} x2={168} y2={50} />
+              <path className="mask-expression" d="M153,62 Q160,59 167,62" />
+              <text className="mask-label" x={160} y={88} textAnchor="middle">初対面</text>
+            </g>
+            <path className="arrow-switch" d="M65,55 L78,55" />
+            <path className="arrow-switch" d="M125,55 L138,55" />
+            <text className="ifthen-label" fontFamily="'Cormorant Garamond', serif" fontSize={10} fill="var(--accent)" x={100} y={120} textAnchor="middle">if → then</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>会社では真面目で寡黙。友人の前ではよくしゃべるお調子者。家族の前では甘えん坊。</p></R>
+        <R ok={ok} d={280}><p>「どれが本当の自分？」と悩んだことはありませんか？ 進化心理学の答えはシンプルです。</p></R>
+        <R ok={ok} d={320}><p><strong>全部、本当のあなたです。</strong></p></R>
+        <R ok={ok} d={360}><p>心理学者ウォルター・ミシェルの研究は、性格を「一貫した特性」ではなく、「この状況ではこう振る舞う」というif-thenパターンの集合体として捉えました。</p></R>
+        <R ok={ok} d={400}><p>上司の前では慎重に → 生存戦略（権力者に逆らうリスクの回避）<br />気の合う仲間の前ではオープンに → 同盟強化の戦略<br />初対面の人には様子見 → 情報収集の戦略</p></R>
+        <R ok={ok} d={440}><p>これらは意識的に演じ分けているのではありません。脳が社会的状況を自動で読み取り、最適な行動プログラムを起動しているのです。</p></R>
+        <R ok={ok} d={480}><p>進化生物学では、こうした柔軟な切り替えが「固定された性格」よりも有利であることがゲーム理論のモデルでも証明されています（McNamara et al., 2009）。</p></R>
+        <R ok={ok} d={520}><p>なぜなら、<strong>いつも同じ行動をする個体は、予測されやすく、利用されやすい</strong>から。</p></R>
+      </div>
+      <R ok={ok} d={600}>
+        <div className="section-point">
+          <p>「本当の自分」を探す必要はありません。あなたは状況ごとに最適な戦略を自動選択する、精巧なシステムそのものです。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -364,6 +420,21 @@ export default function PersonalityPage() {
           animation: fadeIn 1s ease 2.5s forwards;
         }
 
+        /* ─── Section 03 SVG Classes ─── */
+        .mask-face { stroke: var(--accent-light); stroke-width: 1.2; fill: none; }
+        .mask-expression { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-linecap: round; }
+        .mask-label { font-family: 'Noto Sans JP', sans-serif; font-size: 8px; fill: var(--muted); }
+        .mask-group { opacity: 0; }
+        .svg-animate.visible .mask-group.m1 { animation: maskIn 0.8s ease 0.5s forwards; }
+        .svg-animate.visible .mask-group.m2 { animation: maskIn 0.8s ease 1.2s forwards; }
+        .svg-animate.visible .mask-group.m3 { animation: maskIn 0.8s ease 1.9s forwards; }
+        @keyframes maskIn { to { opacity: 1; } }
+        .arrow-switch { stroke: var(--accent-light); stroke-width: 0.8; fill: none; stroke-dasharray: 4 3; opacity: 0; }
+        .svg-animate.visible .arrow-switch { animation: arrowIn 0.6s ease 2.5s forwards; }
+        @keyframes arrowIn { to { opacity: 0.6; } }
+        .ifthen-label { opacity: 0; }
+        .svg-animate.visible .ifthen-label { animation: fadeIn 0.8s ease 2.8s forwards; }
+
         /* ─── Responsive ─── */
         @media (max-width: 640px) {
           .section { padding: 48px 16px; }
@@ -422,6 +493,7 @@ export default function PersonalityPage() {
 
       <Section01 />
       <Section02 />
+      <Section03 />
     </main>
   );
 }
