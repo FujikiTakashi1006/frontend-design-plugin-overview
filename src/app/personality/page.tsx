@@ -243,6 +243,56 @@ function Section05() {
   );
 }
 
+/* ─── Section 06: ソシオメーター ─── */
+function Section06() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">06</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">自信とは、自分への評価ではなく、<br />集団からの受容度メーター</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 160" role="img" aria-label="ソシオメーター：自尊心ゲージの針が否定的環境から肯定的環境へ振れる">
+            <path className="gauge-bg" d="M50,120 A60,60 0 0,1 150,120" />
+            <path className="gauge-fill" d="M50,120 A60,60 0 0,1 150,120" />
+            <line className="gauge-needle" x1={100} y1={120} x2={100} y2={65} />
+            <circle cx={100} cy={120} r={4} fill="var(--ink)" />
+            <text fontFamily="'Noto Sans JP', sans-serif" fontSize={7} fill="var(--muted)" x={40} y={135}>低</text>
+            <text fontFamily="'Noto Sans JP', sans-serif" fontSize={7} fill="var(--muted)" x={155} y={135}>高</text>
+            {/* Negative env (X mark) */}
+            <g className="env-icon neg">
+              <circle cx={30} cy={90} r={8} fill="none" stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
+              <line x1={27} y1={87} x2={33} y2={93} stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
+              <line x1={33} y1={87} x2={27} y2={93} stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
+            </g>
+            {/* Positive env */}
+            <g className="env-icon pos">
+              <circle cx={170} cy={90} r={8} fill="none" stroke="var(--accent)" strokeWidth={0.8} />
+              <circle cx={170} cy={90} r={3} fill="var(--accent)" opacity={0.3} />
+            </g>
+            <text className="socio-label" fontFamily="'Cormorant Garamond', serif" fontSize={10} fill="var(--accent)" x={100} y={155} textAnchor="middle">sociometer</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>「もっと自信を持て」とよく言われます。まるで自信とは、自分の内側から湧き上がるものであるかのように。</p></R>
+        <R ok={ok} d={280}><p>しかし心理学者マーク・リアリーのソシオメーター理論は、まったく異なる見方を提案しています。</p></R>
+        <R ok={ok} d={320}><p><strong>自尊心とは、自分が集団から受け入れられているかを測るゲージである。</strong></p></R>
+        <R ok={ok} d={360}><p>自尊心が下がる＝社会的に排除されるリスクが高まっている信号。自尊心が上がる＝集団の中で安全なポジションにいる信号。</p></R>
+        <R ok={ok} d={400}><p>つまり「自信がない」という感覚の正体は、今いる社会的環境の中で自分の居場所が不安定だというアラートです。</p></R>
+        <R ok={ok} d={440}><p>ここで重要なことがあります。ソシオメーターが参照しているのは、<strong>今、周囲にいる人間との関係</strong>です。</p></R>
+        <R ok={ok} d={480}><p>もし周囲が自分を否定する人ばかりなら、ゲージは下がり続けます。どれだけ自己啓発をしても、ソシオメーターの入力源（周囲の人間）が変わらなければ、自尊心は構造的に低いままです。</p></R>
+        <R ok={ok} d={520}><p>逆に、自分を対等に扱い、挑戦を歓迎する人たちの中に入れば、ソシオメーターは自然と上がります。これは「ポジティブ思考」の効果ではなく、入力が変わったことによるシステムの正常な反応です。</p></R>
+      </div>
+      <R ok={ok} d={600}>
+        <div className="section-point">
+          <p>自信を持ちたいなら、自分の内面ではなく、自分の周囲を変えるのが先です。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -556,6 +606,21 @@ export default function PersonalityPage() {
         .percent-text { font-family: 'Cormorant Garamond', serif; font-size: 14px; fill: var(--accent); opacity: 0; }
         .svg-animate.visible .percent-text { animation: fadeIn 0.8s ease 2s forwards; }
 
+        /* ─── Section 06 SVG Classes ─── */
+        .gauge-bg { fill: none; stroke: var(--border); stroke-width: 4; }
+        .gauge-fill { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 126; stroke-dashoffset: 126; }
+        .svg-animate.visible .gauge-fill { animation: gaugeUp 2s ease 1s forwards; }
+        @keyframes gaugeUp { to { stroke-dashoffset: 40; } }
+        .gauge-needle { stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; transform-origin: 100px 120px; }
+        .svg-animate.visible .gauge-needle { animation: needleSwing 3s ease 0.5s forwards; }
+        @keyframes needleSwing { 0% { transform: rotate(-60deg); } 60% { transform: rotate(30deg); } 100% { transform: rotate(15deg); } }
+        .env-icon { opacity: 0; }
+        .svg-animate.visible .env-icon.neg { animation: envIn 0.5s ease 0.5s forwards; }
+        .svg-animate.visible .env-icon.pos { animation: envIn 0.5s ease 2s forwards; }
+        @keyframes envIn { to { opacity: 1; } }
+        .socio-label { opacity: 0; }
+        .svg-animate.visible .socio-label { animation: fadeIn 0.8s ease 2.5s forwards; }
+
         /* ─── Responsive ─── */
         @media (max-width: 640px) {
           .section { padding: 48px 16px; }
@@ -617,6 +682,7 @@ export default function PersonalityPage() {
       <Section03 />
       <Section04 />
       <Section05 />
+      <Section06 />
     </main>
   );
 }
