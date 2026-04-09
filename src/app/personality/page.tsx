@@ -35,6 +35,67 @@ function R({ ok, children, d = 0 }: { ok: boolean; children: React.ReactNode; d?
   );
 }
 
+/* ─── Section 01: 導入 ─── */
+function Section01() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">01</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">あなたは本当に<br />「あなた」ですか？</h2></R>
+      <div className="section-body">
+        <R ok={ok} d={160}><p>転職したら性格が変わった。引っ越したら考え方が変わった。あの人と付き合い始めてから、趣味が変わった。</p></R>
+        <R ok={ok} d={200}><p>こういう経験、ありませんか？</p></R>
+        <R ok={ok} d={240}><p>私たちは「自分には確固たる性格がある」と信じています。でも、こんなにコロコロ変わるものを「自分の性格」と呼んでいいのでしょうか。</p></R>
+        <R ok={ok} d={280}><p>実は、進化心理学や神経科学の研究は、驚くべきことを示しています。</p></R>
+      </div>
+      <R ok={ok} d={360}>
+        <div className="section-point">
+          <p>あなたの性格は、あなたの周りにいる人によってつくられている。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
+/* ─── Section 02: 社会脳 ─── */
+function Section02() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">02</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">脳が巨大化した理由は、<br />数学でも芸術でもなかった</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 160" role="img" aria-label="社会脳仮説：脳のシルエットの周囲に人々のドットが広がり、ダンバー数150を示す">
+            <path className="brain-outline" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
+            <path className="brain-fill" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
+            <circle className="group-circle g1" cx={100} cy={80} r={35} />
+            <circle className="group-circle g2" cx={100} cy={80} r={50} />
+            <circle className="group-circle g3" cx={100} cy={80} r={65} />
+            {[[72,55],[128,55],[60,80],[140,80],[55,105],[145,105],[42,65],[158,65]].map(([cx,cy], i) => (
+              <circle key={i} className={`person-dot d${i+1}`} cx={cx} cy={cy} r={i < 4 ? 2.5 : i < 6 ? 2 : 1.5} />
+            ))}
+            <text className="num-150" x={100} y={148} textAnchor="middle">150</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>人間の脳は体重の2%しかないのに、エネルギーの20%を消費します。これほどコストの高い臓器が進化で残ったのは、それだけの「見返り」があったからです。</p></R>
+        <R ok={ok} d={280}><p>では何のために？</p></R>
+        <R ok={ok} d={320}><p>長い間「道具を作るため」「狩りをするため」と考えられてきました。しかし人類学者ロビン・ダンバーの研究（社会脳仮説）は、別の答えを示しました。</p></R>
+        <R ok={ok} d={360}><p><strong>霊長類の脳の大きさは、群れのサイズと比例する。</strong></p></R>
+        <R ok={ok} d={400}><p>つまり脳は、複雑な人間関係を処理するために大きくなった。誰が味方で、誰が敵か。誰に恩を売り、誰から恩を返してもらうか。この「社会的な計算」こそが、脳の本来の仕事です。</p></R>
+        <R ok={ok} d={440}><p>人間の場合、安定的に関係を維持できる人数は約150人（ダンバー数）。私たちの脳は、この150人の関係をナビゲートするために最適化されたコンピュータなのです。</p></R>
+      </div>
+      <R ok={ok} d={520}>
+        <div className="section-point">
+          <p>脳の最大の仕事は、思考でも創造でもなく「人間関係の処理」。あなたの脳のリソースの大部分は、今この瞬間も「周りの人」に使われています。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -358,6 +419,9 @@ export default function PersonalityPage() {
           <div className="scroll-line" />
         </div>
       </section>
+
+      <Section01 />
+      <Section02 />
     </main>
   );
 }
