@@ -293,6 +293,57 @@ function Section06() {
   );
 }
 
+/* ─── Section 07: ネットワーク再構成 ─── */
+function Section07() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">07</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">「環境を変える」は逃げじゃない。<br />最も合理的な自己変革だ。</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 140" role="img" aria-label="ネットワーク再構成：古い接続が薄れ、新しい接続が描かれる">
+            {/* Old network */}
+            <line className="old-path" x1={100} y1={70} x2={50} y2={30} />
+            <line className="old-path" x1={100} y1={70} x2={40} y2={80} />
+            <line className="old-path" x1={100} y1={70} x2={60} y2={115} />
+            <circle cx={50} cy={30} r={3} fill="var(--border)" opacity={0.4} />
+            <circle cx={40} cy={80} r={3} fill="var(--border)" opacity={0.4} />
+            <circle cx={60} cy={115} r={3} fill="var(--border)" opacity={0.4} />
+            {/* Center */}
+            <circle cx={100} cy={70} r={6} fill="var(--accent)" opacity={0.9} />
+            {/* New network */}
+            <path className="new-path" d="M100,70 L150,35" />
+            <path className="new-path" d="M100,70 L160,80" style={{ animationDelay: '1.3s' }} />
+            <path className="new-path" d="M100,70 L140,115" style={{ animationDelay: '1.6s' }} />
+            <circle className="transform-node t1" cx={150} cy={35} r={4} />
+            <circle className="transform-node t2" cx={160} cy={80} r={4} />
+            <circle className="transform-node t3" cx={140} cy={115} r={4} />
+            <text className="reconnect-label" fontFamily="'Cormorant Garamond', serif" fontSize={10} fill="var(--accent)" x={100} y={12} textAnchor="middle">re:connect</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>ここまでの内容を整理します。</p></R>
+        <R ok={ok} d={280}><p>脳は、周囲の人間関係を処理するために進化した（社会脳仮説）。性格は固定されたものではなく、社会的状況に応じて自動で切り替わる戦略の束である（if-thenパターン）。</p></R>
+        <R ok={ok} d={320}><p>人間には、周囲の行動や感情を自動的にコピーし、集団の基準に合わせようとする神経回路がハードウェアとして組み込まれている（過剰模倣と同調エラー検出）。</p></R>
+        <R ok={ok} d={360}><p>その結果、肥満・幸福感・年収に至るまで、周囲の人間から測定可能な影響を受ける（社会的伝染）。自信や自尊心すら、周囲の人間との関係性によって規定される（ソシオメーター理論）。</p></R>
+        <R ok={ok} d={400}><p>これらすべてが指し示しているのは、一つのシンプルな事実です。</p></R>
+        <R ok={ok} d={440}><p><strong>あなたは「誰と過ごすか」でつくられている。</strong></p></R>
+        <R ok={ok} d={480}><p>だからこそ、集中している人、仕事を楽しんでいる人、挑戦を続けている人の近くに自分を置くことは、「刺激をもらう」といった軽い話ではありません。</p></R>
+        <R ok={ok} d={520}><p>それは自分の脳の入力を変えること。自分の行動戦略の基準線を書き換えること。ソシオメーターの参照点をリセットすること。つまり、<strong>自分自身を再構成する行為</strong>です。</p></R>
+        <R ok={ok} d={560}><p>「自分を変えたい」と思ったとき、意志の力で自分の内面を変えようとするのは、進化の設計に逆らうことです。脳はそもそも、外部の社会的入力に応じて自分を調整するように作られているのですから。</p></R>
+        <R ok={ok} d={600}><p>その設計に素直に従いましょう。自分を変えたいなら、自分の周りを変える。</p></R>
+      </div>
+      <R ok={ok} d={680}>
+        <div className="section-point">
+          <p>自分を変えたいなら、自分の周りを変える。それが、数万年の進化が教えてくれる最もシンプルな戦略です。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -621,6 +672,22 @@ export default function PersonalityPage() {
         .socio-label { opacity: 0; }
         .svg-animate.visible .socio-label { animation: fadeIn 0.8s ease 2.5s forwards; }
 
+        /* ─── Section 07 SVG Classes ─── */
+        .old-path { stroke: var(--border); stroke-width: 1; fill: none; stroke-dasharray: 4 3; opacity: 0.5; }
+        .new-path { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-dasharray: 200; stroke-dashoffset: 200; }
+        .svg-animate.visible .new-path { animation: drawNew 2s ease 1s forwards; }
+        @keyframes drawNew { to { stroke-dashoffset: 0; } }
+        .transform-node { fill: var(--accent); opacity: 0; }
+        .svg-animate.visible .transform-node.t1 { animation: transformIn 0.6s ease 1.5s forwards; }
+        .svg-animate.visible .transform-node.t2 { animation: transformIn 0.6s ease 2s forwards; }
+        .svg-animate.visible .transform-node.t3 { animation: transformIn 0.6s ease 2.5s forwards; }
+        @keyframes transformIn { to { opacity: 0.8; } }
+        .reconnect-label { opacity: 0; }
+        .svg-animate.visible .reconnect-label { animation: fadeIn 0.8s ease 3s forwards; }
+
+        .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--border); }
+        .footer p { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
+
         /* ─── Responsive ─── */
         @media (max-width: 640px) {
           .section { padding: 48px 16px; }
@@ -683,6 +750,10 @@ export default function PersonalityPage() {
       <Section04 />
       <Section05 />
       <Section06 />
+      <Section07 />
+      <footer className="footer">
+        <p>Built with Claude Code</p>
+      </footer>
     </main>
   );
 }
