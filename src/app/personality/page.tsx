@@ -310,7 +310,54 @@ export default function PersonalityPage() {
         }
       `}</style>
 
-      {/* Content will be added in subsequent tasks */}
+      <section className="hero">
+        <p className="hero-label" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.3s forwards' }}>
+          Evolutionary Psychology
+        </p>
+        <h1 className="hero-title" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.5s forwards' }}>
+          あなたの性格は、あなたが<br /><em>「選んだもの」</em>じゃない。
+        </h1>
+        <p className="hero-subtitle" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.7s forwards' }}>
+          進化心理学と神経科学が明かす、<br />「自分」をつくる本当のメカニズム
+        </p>
+        <div className="divider" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 1.1s forwards' }} />
+        <div className="hero-svg-container" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.9s forwards' }}>
+          <svg viewBox="0 0 400 250" role="img" aria-label="社会的ネットワーク図：中心の人物から周囲の人々へ接続が広がる">
+            {/* Connection lines */}
+            {[
+              [200,125,120,60], [200,125,280,60], [200,125,100,150],
+              [200,125,300,150], [200,125,140,200], [200,125,260,200],
+              [120,60,280,60], [100,150,140,200], [300,150,260,200], [120,60,100,150]
+            ].map(([x1,y1,x2,y2], i) => (
+              <line key={i} className="connection" x1={x1} y1={y1} x2={x2} y2={y2}
+                style={{ animationDelay: `${1.2 + i * 0.2}s` }} />
+            ))}
+            {/* Pulse rings */}
+            {[0, 1, 2].map(i => (
+              <circle key={i} className="pulse" cx={200} cy={125} r={4}
+                style={{ animationDelay: `${i}s` }} />
+            ))}
+            {/* Center node */}
+            <circle cx={200} cy={125} r={8} fill="var(--accent)" opacity={0.9} />
+            {/* Surrounding nodes */}
+            {[[120,60],[280,60],[100,150],[300,150],[140,200],[260,200]].map(([cx,cy], i) => (
+              <circle key={i} className="node-appear" cx={cx} cy={cy} r={5}
+                fill="var(--accent)" style={{ animationDelay: `${1.0 + i * 0.1}s` }} />
+            ))}
+            {/* Outer nodes (friends of friends) */}
+            {[[60,30],[340,30],[50,190]].map(([cx,cy], i) => (
+              <circle key={i} className="node-appear" cx={cx} cy={cy} r={3}
+                fill="var(--accent)" opacity={0.3} style={{ animationDelay: `${1.6 + i * 0.1}s` }} />
+            ))}
+          </svg>
+        </div>
+        <div className="scroll-indicator" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 1.5s forwards' }}>
+          <span style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', textTransform: 'uppercase' as const, fontFamily: "'Cormorant Garamond', serif" }}>
+            Scroll
+          </span>
+          <div className="scroll-line" />
+        </div>
+      </section>
     </main>
   );
 }
