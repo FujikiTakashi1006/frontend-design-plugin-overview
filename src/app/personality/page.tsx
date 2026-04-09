@@ -197,6 +197,52 @@ function Section04() {
   );
 }
 
+/* ─── Section 05: 社会的伝染 ─── */
+function Section05() {
+  const { ref, ok } = useReveal();
+  return (
+    <section className="section" ref={ref}>
+      <R ok={ok} d={0}><p className="section-number">05</p></R>
+      <R ok={ok} d={80}><h2 className="section-heading">肥満も、幸福も、年収も<br />「うつる」</h2></R>
+      <R ok={ok} d={160}>
+        <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
+          <svg viewBox="0 0 200 160" role="img" aria-label="社会的伝染の波紋：中心から友人、友人の友人へ影響が伝播し、57%のリスク上昇を示す">
+            <circle cx={100} cy={80} r={6} fill="var(--accent)" opacity={0.9} />
+            {[0,1,2].map(i => (
+              <circle key={i} className={`ripple r${i+1}`} cx={100} cy={80} r={8} />
+            ))}
+            {[[60,50],[140,50],[55,100],[145,100]].map(([cx,cy], i) => (
+              <circle key={i} className="spread-node" cx={cx} cy={cy} r={4}
+                style={{ animationDelay: `${1 + i * 0.2}s` }} />
+            ))}
+            {[[30,30],[170,30],[25,120],[175,120]].map(([cx,cy], i) => (
+              <circle key={i} className="spread-node" cx={cx} cy={cy} r={3}
+                style={{ animationDelay: `${2 + i * 0.2}s` }} />
+            ))}
+            <text className="percent-text" x={100} y={148} textAnchor="middle">57%</text>
+          </svg>
+        </div>
+      </R>
+      <div className="section-body">
+        <R ok={ok} d={240}><p>「あの人といると元気になる」「あの職場にいると疲れる」——この体感を、ハーバード大学の研究チームが大規模データで検証しました。</p></R>
+        <R ok={ok} d={280}><p>社会学者クリスタキスとファウラーは、約1万2000人を32年間追跡したフラミンガム心臓研究のデータを分析し、衝撃的な結果を発表しました（2007年、NEJM掲載）。</p></R>
+        <R ok={ok} d={320}><p><strong>友人が肥満になると、自分が肥満になるリスクが57%上がる。</strong></p></R>
+        <R ok={ok} d={360}><p>これは食事を共にするから、という単純な話ではありません。地理的に離れた友人でも同じ効果が見られたのです。</p></R>
+        <R ok={ok} d={400}><p>さらに後続の研究で、喫煙の習慣、幸福感、孤独感でも同様の伝染効果が確認されました。しかも影響は「友人の友人の友人」、つまり会ったこともない人からも波及します。</p></R>
+        <R ok={ok} d={440}><p>別の研究では、パートナーが禁煙や運動を始めると、自分も同じ行動を起こす確率が数倍に跳ね上がることが確認されています（Jackson et al., 2015, JAMA Internal Medicine）。</p></R>
+        <R ok={ok} d={480}><p>さらに経済学の世界では、アメリカ政府が実施した大規模な社会実験「Moving to Opportunity」の追跡調査で、貧困地域から低貧困地域に引っ越した家庭の子どもは、大人になったとき収入が最大31%高くなることが判明しました（Chetty et al., 2016）。</p></R>
+        <R ok={ok} d={520}><p>これはランダムに引っ越し先を割り当てたRCT（無作為化比較試験）であり、因果関係が確認された、極めて信頼度の高いエビデンスです。</p></R>
+        <R ok={ok} d={560}><p>変わったのは「周りにいる人」だけ。教育プログラムも、資金援助もなし。<strong>ただ環境を変えただけで、人生の軌道が変わった。</strong></p></R>
+      </div>
+      <R ok={ok} d={640}>
+        <div className="section-point">
+          <p>「空気」は比喩ではありません。周囲の人間の行動・感情・価値観は、測定可能な力であなたに伝染しています。</p>
+        </div>
+      </R>
+    </section>
+  );
+}
+
 /* ─── Page ─── */
 export default function PersonalityPage() {
   return (
@@ -498,6 +544,18 @@ export default function PersonalityPage() {
         .error-text { fill: var(--error); opacity: 0; }
         .svg-animate.visible .error-text { animation: fadeIn 0.6s ease 2.5s forwards; }
 
+        /* ─── Section 05 SVG Classes ─── */
+        .ripple { fill: none; stroke: var(--accent); stroke-width: 0.8; opacity: 0; }
+        .svg-animate.visible .ripple.r1 { animation: rippleOut 3s ease 0.5s infinite; }
+        .svg-animate.visible .ripple.r2 { animation: rippleOut 3s ease 1.5s infinite; }
+        .svg-animate.visible .ripple.r3 { animation: rippleOut 3s ease 2.5s infinite; }
+        @keyframes rippleOut { 0% { r: 8; opacity: 0.5; } 100% { r: 80; opacity: 0; } }
+        .spread-node { fill: var(--accent); opacity: 0.3; }
+        .svg-animate.visible .spread-node { animation: nodeActivate 0.5s ease forwards; }
+        @keyframes nodeActivate { to { opacity: 0.8; } }
+        .percent-text { font-family: 'Cormorant Garamond', serif; font-size: 14px; fill: var(--accent); opacity: 0; }
+        .svg-animate.visible .percent-text { animation: fadeIn 0.8s ease 2s forwards; }
+
         /* ─── Responsive ─── */
         @media (max-width: 640px) {
           .section { padding: 48px 16px; }
@@ -558,6 +616,7 @@ export default function PersonalityPage() {
       <Section02 />
       <Section03 />
       <Section04 />
+      <Section05 />
     </main>
   );
 }
