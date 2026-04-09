@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 
 /* ─── Reveal on Scroll ─── */
 function useReveal(threshold = 0.2) {
@@ -389,6 +390,18 @@ export default function PersonalityPage() {
           inset: 0;
           pointer-events: none;
         }
+        .back-link {
+          position: absolute;
+          top: 24px;
+          left: 24px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 13px;
+          color: var(--muted);
+          text-decoration: none;
+          letter-spacing: 1px;
+          transition: color 0.3s ease;
+        }
+        .back-link:hover { color: var(--accent); }
         .hero-label {
           font-family: 'Cormorant Garamond', serif;
           font-size: 12px;
@@ -437,6 +450,7 @@ export default function PersonalityPage() {
           width: 1px;
           height: 40px;
           background: linear-gradient(to bottom, var(--accent), transparent);
+          animation: scrollPulse 2s ease-in-out infinite;
         }
 
         /* ─── Animations ─── */
@@ -696,6 +710,9 @@ export default function PersonalityPage() {
       `}</style>
 
       <section className="hero">
+        <Link href="/" className="back-link" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.1s forwards' }}>
+          ← Knowledge Hub
+        </Link>
         <p className="hero-label" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.3s forwards' }}>
           Evolutionary Psychology
         </p>
