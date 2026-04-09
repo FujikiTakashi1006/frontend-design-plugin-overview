@@ -27,6 +27,18 @@ const articles: Article[] = [
   {
     category: "guide",
     tag: "Guide",
+    title: "あなたの性格は、あなたが「選んだもの」じゃない",
+    description:
+      "進化心理学が明かす、「自分」をつくる本当のメカニズム",
+    href: "/personality",
+    date: "2026/4/8",
+    author: "藤木崇史",
+    accent: "#8b6f47",
+    thumb: "/thumbs/personality.png",
+  },
+  {
+    category: "guide",
+    tag: "Guide",
     title: "Claude Mythos Preview まとめ",
     description:
       "Anthropic史上最強のAIモデル「Mythos」の全貌。ベンチマーク、安全性、価格情報を神話的なビジュアルで解説。",
