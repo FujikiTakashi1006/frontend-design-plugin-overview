@@ -202,21 +202,9 @@ function Section04() {
                   <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={215} y={52} textAnchor="middle">B</text>
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={215} y={18} textAnchor="middle">あなた</text>
                 </g>
-                {/* Error detection area */}
-                <g className="error-zone">
-                  <rect x={50} y={95} width={160} height={48} rx={8} fill="var(--error)" opacity={0.04} stroke="var(--error)" strokeWidth={1} strokeDasharray="4 2" />
-                  <circle className="error-signal" cx={85} cy={119} r={10} />
-                  <text className="error-text" fontFamily="'Noto Sans JP',sans-serif" fontSize={10} fontWeight={700} x={85} y={123} textAnchor="middle">!</text>
-                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--error)" x={110} y={115} textAnchor="start">脳の反応</text>
-                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={10} fontWeight={500} fill="var(--error)" x={110} y={131} textAnchor="start">「みんなと違う＝エラー」</text>
-                </g>
-                {/* Arrow from outlier to error */}
-                <path className="error-arrow" d="M215,65 L150,95" fill="none" stroke="var(--error)" strokeWidth={1.2} markerEnd="url(#arrowErr)" />
-                <defs>
-                  <marker id="arrowErr" markerWidth={6} markerHeight={4} refX={5} refY={2} orient="auto">
-                    <path d="M0,0 L6,2 L0,4" fill="var(--error)" />
-                  </marker>
-                </defs>
+                {/* Error indicator next to B */}
+                <circle className="error-signal" cx={240} cy={47} r={10} />
+                <text className="error-text" fontFamily="'Cormorant Garamond',serif" fontSize={14} fontWeight={700} x={240} y={52} textAnchor="middle">!</text>
               </svg>
             </div>
           </div>
