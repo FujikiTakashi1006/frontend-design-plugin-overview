@@ -351,7 +351,9 @@ function Section06() {
                   {/* Small "you" */}
                   <circle cx={65} cy={80} r={8} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1} opacity={0.4} />
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={65} y={83} textAnchor="middle">自分</text>
-                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={65} y={105} textAnchor="middle" opacity={0.7}>▼</text>
+                  {/* Down arrow */}
+                  <line x1={65} y1={92} x2={65} y2={106} stroke="var(--error)" strokeWidth={1.5} opacity={0.6} />
+                  <path d="M60,101 L65,108 L70,101" fill="none" stroke="var(--error)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" opacity={0.6} />
                 </g>
                 {/* Arrow */}
                 <path className="socio-divider" d="M125,60 L135,60" fill="none" stroke="var(--muted)" strokeWidth={1} />
@@ -367,7 +369,9 @@ function Section06() {
                   {/* Big "you" */}
                   <circle cx={195} cy={80} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={195} y={83} textAnchor="middle">自分</text>
-                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--accent)" x={195} y={105} textAnchor="middle">▲</text>
+                  {/* Up arrow */}
+                  <line x1={195} y1={108} x2={195} y2={94} stroke="var(--accent)" strokeWidth={1.5} />
+                  <path d="M190,99 L195,92 L200,99" fill="none" stroke="var(--accent)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
                 </g>
                 {/* Bottom */}
                 <text className="socio-bottom" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--muted)" x={130} y={140} textAnchor="middle">自信 ＝ 周囲からの受容度メーター</text>
