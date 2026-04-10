@@ -336,10 +336,9 @@ function Section06() {
                   ))}
                   {/* Small "you" */}
                   <circle cx={65} cy={80} r={8} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1.2} />
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={65} y={83} textAnchor="middle">自分</text>
-                  {/* Down arrow */}
-                  <line x1={65} y1={92} x2={65} y2={106} stroke="var(--error)" strokeWidth={1.5} opacity={0.6} />
-                  <path d="M60,101 L65,108 L70,101" fill="none" stroke="var(--error)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" opacity={0.6} />
+                  {/* Down arrow (right of self) */}
+                  <line x1={80} y1={74} x2={80} y2={88} stroke="var(--error)" strokeWidth={1.5} opacity={0.6} />
+                  <path d="M75,83 L80,90 L85,83" fill="none" stroke="var(--error)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" opacity={0.6} />
                 </g>
                 {/* Arrow */}
                 <path className="socio-divider" d="M125,60 L135,60" fill="none" stroke="var(--muted)" strokeWidth={1} />
@@ -354,10 +353,9 @@ function Section06() {
                   ))}
                   {/* Big "you" */}
                   <circle cx={195} cy={80} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={195} y={83} textAnchor="middle">自分</text>
-                  {/* Up arrow */}
-                  <line x1={195} y1={108} x2={195} y2={94} stroke="var(--accent)" strokeWidth={1.5} />
-                  <path d="M190,99 L195,92 L200,99" fill="none" stroke="var(--accent)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Up arrow (right of self) */}
+                  <line x1={214} y1={88} x2={214} y2={74} stroke="var(--accent)" strokeWidth={1.5} />
+                  <path d="M209,79 L214,72 L219,79" fill="none" stroke="var(--accent)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
                 </g>
                 {/* Bottom */}
                 <text className="socio-bottom" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--muted)" x={130} y={140} textAnchor="middle">自信 ＝ 周囲からの受容度メーター</text>
@@ -409,7 +407,6 @@ function Section07() {
                     <circle key={i} cx={x} cy={45} r={9} fill="var(--border)" opacity={0.25} stroke="var(--border)" strokeWidth={1} />
                   ))}
                   <circle cx={57} cy={78} r={10} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1.2} />
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={57} y={81} textAnchor="middle">自分</text>
                 </g>
                 {/* Arrow */}
                 <g className="env-arrow">
@@ -424,7 +421,6 @@ function Section07() {
                     <circle key={i} cx={x} cy={45} r={9} fill="var(--accent)" opacity={0.12} stroke="var(--accent)" strokeWidth={1} />
                   ))}
                   <circle cx={202} cy={78} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={202} y={81} textAnchor="middle">自分</text>
                 </g>
                 {/* Bottom */}
                 <text className="env-bottom" fontFamily="'Noto Sans JP',sans-serif" fontSize={9} fontWeight={500} fill="var(--accent)" x={130} y={130} textAnchor="middle">周りを変える ＝ 自分が変わる</text>
