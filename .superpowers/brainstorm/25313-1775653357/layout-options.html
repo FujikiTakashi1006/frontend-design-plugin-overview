@@ -1,0 +1,124 @@
+<h2>ページレイアウト</h2>
+<p class="subtitle">7セクションの長文科学エッセイをどう読ませるか</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="background:#faf8f5;padding:20px;min-height:320px;font-family:Georgia,serif;">
+        <!-- Hero -->
+        <div style="text-align:center;padding:40px 20px 30px;border-bottom:1px solid #e0dbd4;margin-bottom:20px;">
+          <p style="color:#8b6f47;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px;">EVOLUTIONARY PSYCHOLOGY</p>
+          <p style="color:#1a1a1a;font-size:18px;margin:0 0 6px;line-height:1.3;">あなたの性格は、あなたが<br>「選んだもの」じゃない。</p>
+          <p style="color:#999;font-size:10px;margin:0;">〜 SVGアニメーション 〜</p>
+        </div>
+        <!-- Single column body -->
+        <div style="max-width:200px;margin:0 auto;">
+          <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 6px;width:100%;"></div>
+          <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 6px;width:90%;"></div>
+          <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 12px;width:95%;"></div>
+          <div style="background:#d4ccc0;height:60px;border-radius:4px;margin:0 0 12px;display:flex;align-items:center;justify-content:center;">
+            <span style="color:#8b6f47;font-size:9px;">SVG図解</span>
+          </div>
+          <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 6px;width:85%;"></div>
+          <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 6px;width:100%;"></div>
+          <div style="background:#eee8de;height:8px;border-radius:4px;width:70%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. シングルカラム（記事型）</h3>
+      <p>中央寄せの一列レイアウト。Medium/Substackのような読み物体験。SVGアニメはセクション間にフルワイドで挿入。最も読みやすく、長文に適した構成。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="background:#faf8f5;padding:20px;min-height:320px;font-family:Georgia,serif;">
+        <!-- Hero -->
+        <div style="text-align:center;padding:40px 20px 30px;border-bottom:1px solid #e0dbd4;margin-bottom:20px;">
+          <p style="color:#8b6f47;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px;">EVOLUTIONARY PSYCHOLOGY</p>
+          <p style="color:#1a1a1a;font-size:18px;margin:0 0 6px;line-height:1.3;">あなたの性格は、あなたが<br>「選んだもの」じゃない。</p>
+          <p style="color:#999;font-size:10px;margin:0;">〜 SVGアニメーション 〜</p>
+        </div>
+        <!-- Two column: TOC + body -->
+        <div style="display:flex;gap:16px;">
+          <div style="width:70px;flex-shrink:0;position:relative;">
+            <p style="color:#8b6f47;font-size:7px;letter-spacing:1px;text-transform:uppercase;margin:0 0 6px;">目次</p>
+            <div style="border-left:2px solid #8b6f47;padding-left:8px;">
+              <p style="color:#1a1a1a;font-size:7px;margin:0 0 4px;font-weight:bold;">01 導入</p>
+              <p style="color:#999;font-size:7px;margin:0 0 4px;">02 社会脳</p>
+              <p style="color:#999;font-size:7px;margin:0 0 4px;">03 性格</p>
+              <p style="color:#999;font-size:7px;margin:0 0 4px;">04 同調</p>
+              <p style="color:#999;font-size:7px;margin:0 0 4px;">05 伝染</p>
+              <p style="color:#999;font-size:7px;margin:0 0 4px;">06 自尊心</p>
+              <p style="color:#999;font-size:7px;margin:0;">07 結論</p>
+            </div>
+          </div>
+          <div style="flex:1;">
+            <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 5px;width:100%;"></div>
+            <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 5px;width:88%;"></div>
+            <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 10px;width:92%;"></div>
+            <div style="background:#d4ccc0;height:50px;border-radius:4px;margin:0 0 10px;display:flex;align-items:center;justify-content:center;">
+              <span style="color:#8b6f47;font-size:9px;">SVG図解</span>
+            </div>
+            <div style="background:#eee8de;height:8px;border-radius:4px;margin:0 0 5px;width:80%;"></div>
+            <div style="background:#eee8de;height:8px;border-radius:4px;width:95%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. サイドナビ付き</h3>
+      <p>左にスティッキーな目次ナビ、右に本文。スクロールに連動して現在のセクションをハイライト。長文記事のナビゲーションに優れるが、モバイルでは目次が折りたたみに。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="background:#faf8f5;padding:20px;min-height:320px;font-family:Georgia,serif;">
+        <!-- Hero full bleed -->
+        <div style="text-align:center;padding:40px 20px 20px;">
+          <p style="color:#8b6f47;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin:0 0 8px;">EVOLUTIONARY PSYCHOLOGY</p>
+          <p style="color:#1a1a1a;font-size:18px;margin:0 0 6px;line-height:1.3;">あなたの性格は、あなたが<br>「選んだもの」じゃない。</p>
+        </div>
+        <!-- Alternating sections -->
+        <div style="margin:12px 0;display:flex;gap:10px;align-items:center;">
+          <div style="flex:1;">
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:100%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:85%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;width:90%;"></div>
+          </div>
+          <div style="width:80px;height:60px;background:#d4ccc0;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:#8b6f47;font-size:8px;">SVG</span>
+          </div>
+        </div>
+        <div style="margin:12px 0;display:flex;gap:10px;align-items:center;">
+          <div style="width:80px;height:60px;background:#d4ccc0;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:#8b6f47;font-size:8px;">SVG</span>
+          </div>
+          <div style="flex:1;">
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:100%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:80%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;width:95%;"></div>
+          </div>
+        </div>
+        <div style="margin:12px 0;display:flex;gap:10px;align-items:center;">
+          <div style="flex:1;">
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:90%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;margin:0 0 4px;width:100%;"></div>
+            <div style="background:#eee8de;height:7px;border-radius:4px;width:75%;"></div>
+          </div>
+          <div style="width:80px;height:60px;background:#d4ccc0;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="color:#8b6f47;font-size:8px;">SVG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. マガジン型（交互レイアウト）</h3>
+      <p>テキストとSVGアニメが左右交互に配置。雑誌の見開きのようなリズム。視覚的に変化が多く飽きにくいが、読みの流れがやや途切れる可能性も。</p>
+    </div>
+  </div>
+
+</div>

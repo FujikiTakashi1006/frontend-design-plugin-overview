@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Design</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f3efe8;
+    color: #1a1a1a;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8b6f47;
+    margin-bottom: 32px;
+    font-weight: 600;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: #8b6f47;
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 300;
+    color: #6b6560;
+    line-height: 1.8;
+    max-width: 540px;
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  /* SVG Brain Network Animation */
+  .hero-svg-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  .hero-svg-container svg {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Animated nodes */
+  .node {
+    fill: #8b6f47;
+    opacity: 0.6;
+  }
+
+  .node-core {
+    fill: #8b6f47;
+    opacity: 0.9;
+  }
+
+  .connection {
+    stroke: #c4a882;
+    stroke-width: 0.8;
+    opacity: 0;
+    animation: drawLine 2s ease forwards;
+  }
+
+  .connection:nth-child(1) { animation-delay: 1.2s; }
+  .connection:nth-child(2) { animation-delay: 1.4s; }
+  .connection:nth-child(3) { animation-delay: 1.6s; }
+  .connection:nth-child(4) { animation-delay: 1.8s; }
+  .connection:nth-child(5) { animation-delay: 2.0s; }
+  .connection:nth-child(6) { animation-delay: 2.2s; }
+  .connection:nth-child(7) { animation-delay: 2.4s; }
+  .connection:nth-child(8) { animation-delay: 2.6s; }
+  .connection:nth-child(9) { animation-delay: 2.8s; }
+  .connection:nth-child(10) { animation-delay: 3.0s; }
+
+  .pulse {
+    fill: none;
+    stroke: #8b6f47;
+    stroke-width: 1;
+    opacity: 0;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .pulse:nth-child(2) { animation-delay: 1s; }
+  .pulse:nth-child(3) { animation-delay: 2s; }
+
+  .node-appear {
+    opacity: 0;
+    animation: nodeAppear 0.6s ease forwards;
+  }
+
+  .node-appear:nth-of-type(1) { animation-delay: 1.0s; }
+  .node-appear:nth-of-type(2) { animation-delay: 1.1s; }
+  .node-appear:nth-of-type(3) { animation-delay: 1.2s; }
+  .node-appear:nth-of-type(4) { animation-delay: 1.3s; }
+  .node-appear:nth-of-type(5) { animation-delay: 1.4s; }
+  .node-appear:nth-of-type(6) { animation-delay: 1.5s; }
+  .node-appear:nth-of-type(7) { animation-delay: 1.6s; }
+  .node-appear:nth-of-type(8) { animation-delay: 1.7s; }
+  .node-appear:nth-of-type(9) { animation-delay: 1.8s; }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.5s forwards;
+  }
+
+  .scroll-indicator span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a89a8b;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #8b6f47, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* Divider */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: #c4a882;
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.1s forwards;
+  }
+
+  /* Section preview */
+  .section-preview {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    border-top: 1px solid #e0dbd4;
+  }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: #8b6f47;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+
+  .section-body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 2;
+    color: #3a3632;
+  }
+
+  .section-body p {
+    margin-bottom: 1.5em;
+  }
+
+  .section-point {
+    background: #eee8de;
+    border-left: 3px solid #8b6f47;
+    padding: 20px 24px;
+    margin: 32px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .section-point p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes drawLine {
+    from { opacity: 0; stroke-dasharray: 200; stroke-dashoffset: 200; }
+    to { opacity: 0.4; stroke-dasharray: 200; stroke-dashoffset: 0; }
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0; r: 4; }
+    50% { opacity: 0.3; r: 20; }
+    100% { opacity: 0; r: 36; }
+  }
+
+  @keyframes nodeAppear {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 0.7; transform: scale(1); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+
+  /* Subtle texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-label">Evolutionary Psychology</div>
+
+  <h1 class="hero-title">
+    あなたの性格は、あなたが<br><em>「選んだもの」</em>じゃない。
+  </h1>
+
+  <p class="hero-subtitle">
+    進化心理学と神経科学が明かす、<br>
+    「自分」をつくる本当のメカニズム
+  </p>
+
+  <div class="divider"></div>
+
+  <!-- SVG: Social Brain Network -->
+  <div class="hero-svg-container">
+    <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+      <!-- Connections (drawn with animation) -->
+      <line class="connection" x1="200" y1="125" x2="120" y2="60" />
+      <line class="connection" x1="200" y1="125" x2="280" y2="60" />
+      <line class="connection" x1="200" y1="125" x2="100" y2="150" />
+      <line class="connection" x1="200" y1="125" x2="300" y2="150" />
+      <line class="connection" x1="200" y1="125" x2="140" y2="200" />
+      <line class="connection" x1="200" y1="125" x2="260" y2="200" />
+      <line class="connection" x1="120" y1="60" x2="280" y2="60" />
+      <line class="connection" x1="100" y1="150" x2="140" y2="200" />
+      <line class="connection" x1="300" y1="150" x2="260" y2="200" />
+      <line class="connection" x1="120" y1="60" x2="100" y2="150" />
+
+      <!-- Pulse rings from center -->
+      <circle class="pulse" cx="200" cy="125" r="4" />
+      <circle class="pulse" cx="200" cy="125" r="4" />
+      <circle class="pulse" cx="200" cy="125" r="4" />
+
+      <!-- Center node (self) -->
+      <circle class="node-core" cx="200" cy="125" r="8" />
+
+      <!-- Surrounding nodes (people) -->
+      <circle class="node node-appear" cx="120" cy="60" r="5" />
+      <circle class="node node-appear" cx="280" cy="60" r="5" />
+      <circle class="node node-appear" cx="100" cy="150" r="5" />
+      <circle class="node node-appear" cx="300" cy="150" r="5" />
+      <circle class="node node-appear" cx="140" cy="200" r="5" />
+      <circle class="node node-appear" cx="260" cy="200" r="5" />
+
+      <!-- Outer nodes (friends of friends) -->
+      <circle class="node node-appear" cx="60" cy="30" r="3" style="opacity:0.3;" />
+      <circle class="node node-appear" cx="340" cy="30" r="3" style="opacity:0.3;" />
+      <circle class="node node-appear" cx="50" cy="190" r="3" style="opacity:0.3;" />
+    </svg>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SECTION 1 PREVIEW (to show the text treatment) -->
+<section class="section-preview">
+  <div class="section-number">01</div>
+  <h2 class="section-heading">あなたは本当に<br>「あなた」ですか？</h2>
+  <div class="section-body">
+    <p>
+      転職したら性格が変わった。引っ越したら考え方が変わった。あの人と付き合い始めてから、趣味が変わった。
+    </p>
+    <p>
+      こういう経験、ありませんか？
+    </p>
+    <p>
+      私たちは「自分には確固たる性格がある」と信じています。でも、こんなにコロコロ変わるものを「自分の性格」と呼んでいいのでしょうか。
+    </p>
+    <p>
+      実は、進化心理学や神経科学の研究は、驚くべきことを示しています。
+    </p>
+    <div class="section-point">
+      <p>あなたの性格は、あなたの周りにいる人によってつくられている。</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+{"type":"server-started","port":64237,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:64237","screen_dir":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/25313-1775653357"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/25313-1775653357/color-direction.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/25313-1775653357/layout-options.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/25313-1775653357/hero-design.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/25313-1775653357/svg-animations.html"}
+{"type":"server-stopped","reason":"idle timeout"}

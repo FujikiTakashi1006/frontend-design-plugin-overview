@@ -1,0 +1,9 @@
+{"type":"server-started","port":61814,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:61814","screen_dir":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/visual-style.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/visual-style-v2.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/sections.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/approaches.html"}
+{"source":"user-event","type":"click","text":"Aether Intelligence\n      AI Infrastructurefor the Enterprise\n      \n      \n        Get Started\n        Learn More\n      \n    \n    \n      B. メッシュグラデーション + グリッド\n      ゆっくり揺らぐオーロラ風のグラデーションブロブに、微細なグリッドが重なる。CSSアニメーション主体（パフォーマンス◎）。テキストはブラー→クリアの登場演出。モダンで洗練された印象。","choice":"b","id":null,"timestamp":1775036456583}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/design-summary.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/76089-1775036176/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

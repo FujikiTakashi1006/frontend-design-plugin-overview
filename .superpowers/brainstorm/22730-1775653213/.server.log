@@ -1,0 +1,9 @@
+{"type":"server-started","port":60678,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:60678","screen_dir":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/visual-tone.html"}
+{"source":"user-event","type":"click","text":"C\n    \n      🌌 神話的・壮大\n      「Mythos（神話）」の名にふさわしい荘厳なビジュアル。宇宙的なグラデーション、パーティクル、光のエフェクト。人類がまだ扱いきれないAIの力を暗示するような崇高なデザイン。","choice":"c","id":null,"timestamp":1775653337289}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/structure.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/hero-style.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/benchmark-style.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/color-palette.html"}
+{"type":"screen-added","file":"/Users/fujikitakashi/Desktop/プラグインテスト/.superpowers/brainstorm/22730-1775653213/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

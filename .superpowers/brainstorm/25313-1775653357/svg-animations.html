@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Animation Concepts</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f3efe8;
+    color: #1a1a1a;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 40px 24px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .page-sub {
+    text-align: center;
+    font-size: 13px;
+    color: #8b6f47;
+    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 48px;
+  }
+
+  .section-card {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    background: #faf8f5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  .section-card-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid #e8e4de;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: #8b6f47;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+  }
+
+  .section-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .section-card-body {
+    display: flex;
+    gap: 0;
+  }
+
+  .svg-preview {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: #f5f1ea;
+    border-right: 1px solid #e8e4de;
+  }
+
+  .svg-preview svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .svg-desc {
+    padding: 24px 28px;
+    flex: 1;
+  }
+
+  .svg-desc h3 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8b6f47;
+    margin-bottom: 8px;
+  }
+
+  .svg-desc p {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #3a3632;
+    margin-bottom: 12px;
+  }
+
+  .svg-desc .anim-detail {
+    font-size: 12px;
+    color: #a89a8b;
+    line-height: 1.7;
+    border-top: 1px solid #e8e4de;
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+
+  /* === SVG Animations === */
+
+  /* Section 2: Brain scale */
+  .brain-outline { stroke: #c4a882; stroke-width: 1.5; fill: none; }
+  .brain-fill { fill: #8b6f47; opacity: 0; animation: brainGrow 2s ease 0.5s forwards; }
+  @keyframes brainGrow { to { opacity: 0.15; } }
+  .group-circle { fill: none; stroke: #8b6f47; stroke-width: 1; stroke-dasharray: 4 2; opacity: 0; }
+  .group-circle.g1 { animation: ringAppear 1s ease 1s forwards; }
+  .group-circle.g2 { animation: ringAppear 1s ease 1.5s forwards; }
+  .group-circle.g3 { animation: ringAppear 1s ease 2s forwards; }
+  @keyframes ringAppear { to { opacity: 0.5; } }
+  .person-dot { fill: #8b6f47; opacity: 0; }
+  .person-dot.d1 { animation: dotIn 0.4s ease 1.2s forwards; }
+  .person-dot.d2 { animation: dotIn 0.4s ease 1.4s forwards; }
+  .person-dot.d3 { animation: dotIn 0.4s ease 1.6s forwards; }
+  .person-dot.d4 { animation: dotIn 0.4s ease 1.8s forwards; }
+  .person-dot.d5 { animation: dotIn 0.4s ease 2.0s forwards; }
+  .person-dot.d6 { animation: dotIn 0.4s ease 2.2s forwards; }
+  .person-dot.d7 { animation: dotIn 0.4s ease 2.4s forwards; }
+  .person-dot.d8 { animation: dotIn 0.4s ease 2.6s forwards; }
+  @keyframes dotIn { to { opacity: 0.7; } }
+  .num-150 { font-family: 'Cormorant Garamond', serif; font-size: 16px; fill: #8b6f47; opacity: 0; animation: fadeIn 1s ease 2.5s forwards; }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* Section 3: If-then masks */
+  .mask-face { stroke: #c4a882; stroke-width: 1.2; fill: none; }
+  .mask-expression { stroke: #8b6f47; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+  .mask-label { font-family: 'Noto Sans JP', sans-serif; font-size: 8px; fill: #a89a8b; }
+  .mask-group { opacity: 0; }
+  .mask-group.m1 { animation: maskIn 0.8s ease 0.5s forwards; }
+  .mask-group.m2 { animation: maskIn 0.8s ease 1.2s forwards; }
+  .mask-group.m3 { animation: maskIn 0.8s ease 1.9s forwards; }
+  @keyframes maskIn { to { opacity: 1; } }
+  .arrow-switch { stroke: #c4a882; stroke-width: 0.8; fill: none; stroke-dasharray: 4 3; opacity: 0; animation: arrowIn 0.6s ease 2.5s forwards; }
+  @keyframes arrowIn { to { opacity: 0.6; } }
+
+  /* Section 4: Conformity waves */
+  .wave-line { fill: none; stroke: #c4a882; stroke-width: 1; opacity: 0; }
+  .wave-line.w1 { animation: waveIn 1.5s ease 0.3s forwards; }
+  .wave-line.w2 { animation: waveIn 1.5s ease 0.8s forwards; }
+  .wave-line.w3 { animation: waveIn 1.5s ease 1.3s forwards; }
+  @keyframes waveIn { to { opacity: 0.5; } }
+  .conformity-dot { fill: #8b6f47; opacity: 0; }
+  .conformity-dot.aligned { animation: dotAlign 0.5s ease forwards; }
+  .outlier { fill: #c4574a; opacity: 0; animation: outlierPulse 2s ease-in-out 2s infinite; }
+  @keyframes dotAlign { to { opacity: 0.7; } }
+  @keyframes outlierPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+  .error-signal { stroke: #c4574a; stroke-width: 0.8; fill: none; opacity: 0; stroke-dasharray: 3 2; animation: errorFlash 1.5s ease 2.5s infinite; }
+  @keyframes errorFlash { 0%,100% { opacity:0; } 50% { opacity: 0.6; } }
+
+  /* Section 5: Contagion ripple */
+  .ripple { fill: none; stroke: #8b6f47; stroke-width: 0.8; opacity: 0; }
+  .ripple.r1 { animation: rippleOut 3s ease 0.5s infinite; }
+  .ripple.r2 { animation: rippleOut 3s ease 1.5s infinite; }
+  .ripple.r3 { animation: rippleOut 3s ease 2.5s infinite; }
+  @keyframes rippleOut { 0% { r: 8; opacity: 0.5; } 100% { r: 80; opacity: 0; } }
+  .spread-node { fill: #8b6f47; opacity: 0.3; }
+  .spread-node.activated { animation: nodeActivate 0.5s ease forwards; }
+  @keyframes nodeActivate { to { opacity: 0.8; fill: #8b6f47; } }
+  .percent-text { font-family: 'Cormorant Garamond', serif; font-size: 14px; fill: #8b6f47; opacity: 0; animation: fadeIn 0.8s ease 2s forwards; }
+
+  /* Section 6: Sociometer gauge */
+  .gauge-bg { fill: none; stroke: #e0dbd4; stroke-width: 4; }
+  .gauge-fill { fill: none; stroke: #8b6f47; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 126; stroke-dashoffset: 126; animation: gaugeUp 2s ease 1s forwards; }
+  @keyframes gaugeUp { to { stroke-dashoffset: 40; } }
+  .gauge-needle { stroke: #1a1a1a; stroke-width: 1.5; stroke-linecap: round; transform-origin: 100px 100px; animation: needleSwing 3s ease 0.5s forwards; }
+  @keyframes needleSwing { 0% { transform: rotate(-60deg); } 60% { transform: rotate(30deg); } 100% { transform: rotate(15deg); } }
+  .env-icon { opacity: 0; }
+  .env-icon.neg { animation: envIn 0.5s ease 0.5s forwards; }
+  .env-icon.pos { animation: envIn 0.5s ease 2s forwards; }
+  @keyframes envIn { to { opacity: 1; } }
+
+  /* Section 7: Rewire */
+  .old-path { stroke: #d4ccc0; stroke-width: 1; fill: none; stroke-dasharray: 4 3; opacity: 0.5; }
+  .new-path { stroke: #8b6f47; stroke-width: 1.5; fill: none; stroke-dasharray: 200; stroke-dashoffset: 200; animation: drawNew 2s ease 1s forwards; }
+  @keyframes drawNew { to { stroke-dashoffset: 0; } }
+  .transform-node { fill: #8b6f47; opacity: 0; animation: transformIn 0.6s ease forwards; }
+  .transform-node.t1 { animation-delay: 1.5s; }
+  .transform-node.t2 { animation-delay: 2s; }
+  .transform-node.t3 { animation-delay: 2.5s; }
+  @keyframes transformIn { to { opacity: 0.8; } }
+
+  @media (max-width: 600px) {
+    .section-card-body { flex-direction: column; }
+    .svg-preview { width: 100%; border-right: none; border-bottom: 1px solid #e8e4de; }
+  }
+</style>
+</head>
+<body>
+
+<h1>セクション別 SVGアニメーション</h1>
+<p class="page-sub">7 SECTIONS &mdash; CONCEPT VISUALIZATION</p>
+
+<!-- ===== SECTION 1: Hero (already approved) ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">01</span>
+    <span class="section-name">導入：問いを投げる</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="60" y2="30" />
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="140" y2="30" />
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="50" y2="90" />
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="150" y2="90" />
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="80" y2="120" />
+        <line stroke="#c4a882" stroke-width="0.8" opacity="0.4" x1="100" y1="70" x2="120" y2="120" />
+        <circle cx="100" cy="70" r="6" fill="#8b6f47" opacity="0.9" />
+        <circle cx="60" cy="30" r="3.5" fill="#8b6f47" opacity="0.5" />
+        <circle cx="140" cy="30" r="3.5" fill="#8b6f47" opacity="0.5" />
+        <circle cx="50" cy="90" r="3.5" fill="#8b6f47" opacity="0.5" />
+        <circle cx="150" cy="90" r="3.5" fill="#8b6f47" opacity="0.5" />
+        <circle cx="80" cy="120" r="3.5" fill="#8b6f47" opacity="0.5" />
+        <circle cx="120" cy="120" r="3.5" fill="#8b6f47" opacity="0.5" />
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>ソーシャルネットワーク図</h3>
+      <p>ヒーロー部分で承認済み。中心ノード（自分）から周囲の人々へ接続線が伸び、パルスが波紋のように広がる。</p>
+      <div class="anim-detail">接続線の描画 → ノード出現 → パルスリング（ループ）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2: Social Brain ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">02</span>
+    <span class="section-name">脳が巨大化した理由</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Brain outline -->
+        <path class="brain-outline" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
+        <path class="brain-fill" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
+        <!-- Concentric group rings -->
+        <circle class="group-circle g1" cx="100" cy="80" r="35" />
+        <circle class="group-circle g2" cx="100" cy="80" r="50" />
+        <circle class="group-circle g3" cx="100" cy="80" r="65" />
+        <!-- People dots -->
+        <circle class="person-dot d1" cx="72" cy="55" r="2.5" />
+        <circle class="person-dot d2" cx="128" cy="55" r="2.5" />
+        <circle class="person-dot d3" cx="60" cy="80" r="2.5" />
+        <circle class="person-dot d4" cx="140" cy="80" r="2.5" />
+        <circle class="person-dot d5" cx="55" cy="105" r="2" />
+        <circle class="person-dot d6" cx="145" cy="105" r="2" />
+        <circle class="person-dot d7" cx="42" cy="65" r="1.5" />
+        <circle class="person-dot d8" cx="158" cy="65" r="1.5" />
+        <!-- Dunbar number -->
+        <text class="num-150" x="100" y="148" text-anchor="middle">150</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>社会脳 &times; ダンバー数</h3>
+      <p>脳のシルエットの内側と外側に、同心円状の群れリングが広がる。人を表すドットが順次出現し、最後に「150」のダンバー数が表示。</p>
+      <div class="anim-detail">脳シルエット描画 → 群れリング拡張（3段階）→ 人ドット出現 → 「150」フェードイン</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3: If-Then Personality ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">03</span>
+    <span class="section-name">性格の正体：戦略の切り替え</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Mask 1: Serious (office) -->
+        <g class="mask-group m1">
+          <circle class="mask-face" cx="40" cy="55" r="22" />
+          <line class="mask-expression" x1="32" y1="50" x2="37" y2="49" />
+          <line class="mask-expression" x1="43" y1="49" x2="48" y2="50" />
+          <line class="mask-expression" x1="34" y1="63" x2="46" y2="63" />
+          <text class="mask-label" x="40" y="88" text-anchor="middle">上司の前</text>
+        </g>
+        <!-- Mask 2: Happy (friends) -->
+        <g class="mask-group m2">
+          <circle class="mask-face" cx="100" cy="55" r="22" />
+          <circle cx="93" cy="50" r="2" fill="none" stroke="#8b6f47" stroke-width="1.2" />
+          <circle cx="107" cy="50" r="2" fill="none" stroke="#8b6f47" stroke-width="1.2" />
+          <path class="mask-expression" d="M91,60 Q100,70 109,60" />
+          <text class="mask-label" x="100" y="88" text-anchor="middle">友人の前</text>
+        </g>
+        <!-- Mask 3: Cautious (stranger) -->
+        <g class="mask-group m3">
+          <circle class="mask-face" cx="160" cy="55" r="22" />
+          <line class="mask-expression" x1="152" y1="50" x2="158" y2="50" />
+          <line class="mask-expression" x1="162" y1="50" x2="168" y2="50" />
+          <path class="mask-expression" d="M153,62 Q160,59 167,62" />
+          <text class="mask-label" x="160" y="88" text-anchor="middle">初対面</text>
+        </g>
+        <!-- Switching arrows -->
+        <path class="arrow-switch" d="M65,55 L78,55" />
+        <path class="arrow-switch" d="M125,55 L138,55" />
+        <!-- if-then label -->
+        <text font-family="Cormorant Garamond, serif" font-size="10" fill="#8b6f47" x="100" y="120" text-anchor="middle" opacity="0" style="animation: fadeIn 0.8s ease 2.8s forwards;">if → then</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>ペルソナ切り替え（if-thenマスク）</h3>
+      <p>3つの表情の異なるマスクが順次出現。上司の前では真面目、友人の前では笑顔、初対面では慎重。切り替え矢印で「if→then」パターンを視覚化。</p>
+      <div class="anim-detail">マスク1出現 → 矢印 → マスク2出現 → 矢印 → マスク3出現 → 「if→then」ラベル</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4: Conformity ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">04</span>
+    <span class="section-name">進化が組み込んだ同調装置</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Wave lines (group norm) -->
+        <path class="wave-line w1" d="M10,40 Q50,30 100,40 Q150,50 190,40" />
+        <path class="wave-line w2" d="M10,70 Q50,60 100,70 Q150,80 190,70" />
+        <path class="wave-line w3" d="M10,100 Q50,90 100,100 Q150,110 190,100" />
+        <!-- Aligned dots -->
+        <circle class="conformity-dot aligned" cx="30" cy="38" r="3" style="animation-delay:0.8s;" />
+        <circle class="conformity-dot aligned" cx="60" cy="35" r="3" style="animation-delay:1s;" />
+        <circle class="conformity-dot aligned" cx="90" cy="40" r="3" style="animation-delay:1.2s;" />
+        <circle class="conformity-dot aligned" cx="120" cy="43" r="3" style="animation-delay:1.4s;" />
+        <circle class="conformity-dot aligned" cx="150" cy="40" r="3" style="animation-delay:1.6s;" />
+        <!-- Outlier dot -->
+        <circle class="outlier" cx="170" cy="20" r="4" />
+        <!-- Error signal from outlier -->
+        <circle class="error-signal" cx="170" cy="20" r="12" />
+        <text font-family="Noto Sans JP, sans-serif" font-size="7" fill="#c4574a" x="170" y="10" text-anchor="middle" opacity="0" style="animation: fadeIn 0.6s ease 2.5s forwards;">ERROR</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>同調圧力の波と逸脱エラー</h3>
+      <p>集団の基準線を表す波に沿ってドットが整列。1つだけ外れたドットに「ERROR」シグナルが点滅。脳が逸脱をエラーとして処理する仕組みを視覚化。</p>
+      <div class="anim-detail">波線描画 → ドット整列 → 逸脱ドット出現＋ERRORパルス（ループ）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 5: Social Contagion ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">05</span>
+    <span class="section-name">伝染する感情・行動・人生</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Center person -->
+        <circle cx="100" cy="80" r="6" fill="#8b6f47" opacity="0.9" />
+        <!-- Ripples -->
+        <circle class="ripple r1" cx="100" cy="80" r="8" />
+        <circle class="ripple r2" cx="100" cy="80" r="8" />
+        <circle class="ripple r3" cx="100" cy="80" r="8" />
+        <!-- Friend layer -->
+        <circle class="spread-node activated" cx="60" cy="50" r="4" style="animation-delay:1s;" />
+        <circle class="spread-node activated" cx="140" cy="50" r="4" style="animation-delay:1.2s;" />
+        <circle class="spread-node activated" cx="55" cy="100" r="4" style="animation-delay:1.4s;" />
+        <circle class="spread-node activated" cx="145" cy="100" r="4" style="animation-delay:1.6s;" />
+        <!-- Friend of friend layer -->
+        <circle class="spread-node activated" cx="30" cy="30" r="3" style="animation-delay:2s;" />
+        <circle class="spread-node activated" cx="170" cy="30" r="3" style="animation-delay:2.2s;" />
+        <circle class="spread-node activated" cx="25" cy="120" r="3" style="animation-delay:2.4s;" />
+        <circle class="spread-node activated" cx="175" cy="120" r="3" style="animation-delay:2.6s;" />
+        <!-- 57% label -->
+        <text class="percent-text" x="100" y="148" text-anchor="middle">57%</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>社会的伝染の波紋</h3>
+      <p>中心ノードから波紋が広がり、友人→友人の友人→3次接続へと影響が伝播。各層のノードが順次アクティブに。フラミンガム研究の「57%」を表示。</p>
+      <div class="anim-detail">波紋リング（ループ）→ 第1層アクティブ → 第2層アクティブ → 「57%」フェードイン</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 6: Sociometer ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">06</span>
+    <span class="section-name">自尊心の正体：ソシオメーター</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Gauge arc background -->
+        <path class="gauge-bg" d="M50,120 A60,60 0 0,1 150,120" />
+        <!-- Gauge arc fill -->
+        <path class="gauge-fill" d="M50,120 A60,60 0 0,1 150,120" />
+        <!-- Needle -->
+        <line class="gauge-needle" x1="100" y1="120" x2="100" y2="65" />
+        <circle cx="100" cy="120" r="4" fill="#1a1a1a" />
+        <!-- Labels -->
+        <text font-family="Noto Sans JP, sans-serif" font-size="7" fill="#a89a8b" x="40" y="135">低</text>
+        <text font-family="Noto Sans JP, sans-serif" font-size="7" fill="#a89a8b" x="155" y="135">高</text>
+        <!-- Negative env (left) -->
+        <g class="env-icon neg">
+          <circle cx="30" cy="90" r="8" fill="none" stroke="#c4574a" stroke-width="0.8" opacity="0.5" />
+          <line x1="27" y1="87" x2="33" y2="93" stroke="#c4574a" stroke-width="0.8" opacity="0.5" />
+        </g>
+        <!-- Positive env (right) -->
+        <g class="env-icon pos">
+          <circle cx="170" cy="90" r="8" fill="none" stroke="#8b6f47" stroke-width="0.8" />
+          <circle cx="170" cy="90" r="3" fill="#8b6f47" opacity="0.3" />
+        </g>
+        <!-- Label -->
+        <text font-family="Cormorant Garamond, serif" font-size="10" fill="#8b6f47" x="100" y="155" text-anchor="middle" opacity="0" style="animation: fadeIn 0.8s ease 2.5s forwards;">sociometer</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>ソシオメーター（受容度ゲージ）</h3>
+      <p>半円のゲージメーター。針が左（低い自尊心・否定的環境）から右（高い自尊心・肯定的環境）へ振れる。環境のアイコンが左右に表示。</p>
+      <div class="anim-detail">ゲージ背景 → 針が左から振れ始め → 否定的環境アイコン → 針が右へ → 肯定的環境アイコン</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 7: Conclusion ===== -->
+<div class="section-card">
+  <div class="section-card-header">
+    <span class="section-num">07</span>
+    <span class="section-name">結論：自分自身を再構成する</span>
+  </div>
+  <div class="section-card-body">
+    <div class="svg-preview">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Old network (faded) -->
+        <line class="old-path" x1="100" y1="70" x2="50" y2="30" />
+        <line class="old-path" x1="100" y1="70" x2="40" y2="80" />
+        <line class="old-path" x1="100" y1="70" x2="60" y2="115" />
+        <circle cx="50" cy="30" r="3" fill="#d4ccc0" opacity="0.4" />
+        <circle cx="40" cy="80" r="3" fill="#d4ccc0" opacity="0.4" />
+        <circle cx="60" cy="115" r="3" fill="#d4ccc0" opacity="0.4" />
+        <!-- Center (self) -->
+        <circle cx="100" cy="70" r="6" fill="#8b6f47" opacity="0.9" />
+        <!-- New network (drawn in) -->
+        <path class="new-path" d="M100,70 L150,35" />
+        <path class="new-path" d="M100,70 L160,80" style="animation-delay:1.3s;" />
+        <path class="new-path" d="M100,70 L140,115" style="animation-delay:1.6s;" />
+        <!-- New nodes -->
+        <circle class="transform-node t1" cx="150" cy="35" r="4" />
+        <circle class="transform-node t2" cx="160" cy="80" r="4" />
+        <circle class="transform-node t3" cx="140" cy="115" r="4" />
+        <!-- Arrow of change -->
+        <text font-family="Cormorant Garamond, serif" font-size="10" fill="#8b6f47" x="100" y="12" text-anchor="middle" opacity="0" style="animation: fadeIn 0.8s ease 3s forwards;">re:connect</text>
+      </svg>
+    </div>
+    <div class="svg-desc">
+      <h3>ネットワーク再構成</h3>
+      <p>左側の古いネットワーク（薄い線）から、右側の新しいネットワーク（鮮明な線）へ。中心の自分は変わらず、周囲の接続先が入れ替わる。「自分を変える＝周りを変える」の視覚化。</p>
+      <div class="anim-detail">古いネットワーク表示（薄い）→ 新しい接続線が描画 → 新しいノード出現 → 「re:connect」ラベル</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

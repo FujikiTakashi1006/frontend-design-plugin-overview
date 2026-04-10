@@ -1,0 +1,95 @@
+<h2>ベンチマーク比較 — 表示スタイル</h2>
+<p class="subtitle">Opus 4.6 vs Mythos の性能差をどう見せますか？各指標がスクロールで順に現れる想定です。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:220px;background:#0a0014;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:16px;font-family:system-ui;">
+      <!-- Bar chart style -->
+      <div style="font-size:11px;color:#a78bfa;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">CyberGym</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:10px;color:#888;width:60px;">Opus 4.6</span>
+        <div style="flex:1;background:#1a1025;border-radius:4px;height:24px;overflow:hidden;">
+          <div style="width:66%;height:100%;background:linear-gradient(90deg,#4c1d95,#7c3aed);border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:#e9d5ff;font-weight:600;">66.6%</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:10px;color:#888;width:60px;">Mythos</span>
+        <div style="flex:1;background:#1a1025;border-radius:4px;height:24px;overflow:hidden;">
+          <div style="width:83%;height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:#fff;font-weight:600;box-shadow:0 0 12px rgba(168,85,247,0.3);">83.1%</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#a78bfa;letter-spacing:0.1em;text-transform:uppercase;margin-top:8px;">Exploit成功率</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:10px;color:#888;width:60px;">Opus 4.6</span>
+        <div style="flex:1;background:#1a1025;border-radius:4px;height:24px;overflow:hidden;">
+          <div style="width:3%;height:100%;background:linear-gradient(90deg,#4c1d95,#7c3aed);border-radius:4px;min-width:40px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:#e9d5ff;font-weight:600;">2</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:10px;color:#888;width:60px;">Mythos</span>
+        <div style="flex:1;background:#1a1025;border-radius:4px;height:24px;overflow:hidden;">
+          <div style="width:90%;height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;color:#fff;font-weight:600;box-shadow:0 0 12px rgba(168,85,247,0.3);">181</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 横バーチャート</h3>
+      <p>各指標を横棒グラフで比較。Opus → Mythos の順にアニメーションで伸びる。差の大きさが直感的にわかる。定番だが安定。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:220px;background:#0a0014;padding:24px;display:flex;align-items:center;justify-content:center;gap:40px;font-family:system-ui;">
+      <!-- Big number cards -->
+      <div style="text-align:center;">
+        <div style="font-size:10px;color:#888;letter-spacing:0.1em;margin-bottom:6px;">OPUS 4.6</div>
+        <div style="font-size:36px;font-weight:800;color:#7c3aed;line-height:1;">66.6<span style="font-size:16px;color:#666;">%</span></div>
+        <div style="font-size:9px;color:#666;margin-top:4px;">CyberGym</div>
+      </div>
+      <div style="width:1px;height:60px;background:linear-gradient(transparent,#7c3aed,transparent);"></div>
+      <div style="text-align:center;">
+        <div style="font-size:10px;color:#c084fc;letter-spacing:0.1em;margin-bottom:6px;">MYTHOS</div>
+        <div style="font-size:36px;font-weight:800;color:#a855f7;line-height:1;text-shadow:0 0 20px rgba(168,85,247,0.4);">83.1<span style="font-size:16px;color:#a78bfa;">%</span></div>
+        <div style="font-size:9px;color:#a78bfa;margin-top:4px;">CyberGym</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 大数字カード対比</h3>
+      <p>左にOpus、右にMythosの数字を大きく表示。各指標がカード形式でスクロールリビール。数字のインパクト重視。シンプルで力強い。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:220px;background:#0a0014;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-family:system-ui;">
+      <!-- Radial/gauge style -->
+      <div style="font-size:10px;color:#a78bfa;letter-spacing:0.15em;text-transform:uppercase;">CyberGym Score</div>
+      <div style="display:flex;align-items:center;gap:30px;">
+        <div style="position:relative;width:80px;height:80px;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#1a1025" stroke-width="6"/>
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#7c3aed" stroke-width="6" stroke-dasharray="213.6" stroke-dashoffset="71.4" transform="rotate(-90 40 40)" stroke-linecap="round"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <div style="font-size:18px;font-weight:800;color:#c4b5fd;">66.6</div>
+            <div style="font-size:8px;color:#666;">Opus</div>
+          </div>
+        </div>
+        <div style="font-size:20px;color:#444;">→</div>
+        <div style="position:relative;width:80px;height:80px;">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#1a1025" stroke-width="6"/>
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#a855f7" stroke-width="6" stroke-dasharray="213.6" stroke-dashoffset="36.1" transform="rotate(-90 40 40)" stroke-linecap="round" style="filter:drop-shadow(0 0 6px rgba(168,85,247,0.5))"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <div style="font-size:18px;font-weight:800;color:#e9d5ff;">83.1</div>
+            <div style="font-size:8px;color:#a78bfa;">Mythos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. サークルゲージ</h3>
+      <p>円形のプログレスゲージで視覚的に比較。アニメーションでゲージが充填。ダッシュボード的な洗練された印象。</p>
+    </div>
+  </div>
+</div>

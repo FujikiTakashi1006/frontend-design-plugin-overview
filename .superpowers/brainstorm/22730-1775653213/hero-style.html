@@ -1,0 +1,58 @@
+<h2>ヒーローセクション — 背景演出</h2>
+<p class="subtitle">フルスクリーンのヒーロー。「MYTHOS」のタイトルを引き立てる背景演出はどれが合いますか？</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:200px;background:radial-gradient(ellipse at 50% 50%, #1a0a2e 0%, #0d001a 40%, #000 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <!-- Simulated particle dots -->
+      <div style="position:absolute;inset:0;">
+        <div style="position:absolute;width:2px;height:2px;background:#a855f7;border-radius:50%;top:20%;left:30%;box-shadow:0 0 6px 2px #a855f7;animation:pulse 3s infinite"></div>
+        <div style="position:absolute;width:3px;height:3px;background:#7c3aed;border-radius:50%;top:40%;left:60%;box-shadow:0 0 8px 3px #7c3aed;animation:pulse 2.5s infinite 0.5s"></div>
+        <div style="position:absolute;width:2px;height:2px;background:#c084fc;border-radius:50%;top:70%;left:25%;box-shadow:0 0 6px 2px #c084fc;animation:pulse 4s infinite 1s"></div>
+        <div style="position:absolute;width:1.5px;height:1.5px;background:#a855f7;border-radius:50%;top:30%;left:75%;box-shadow:0 0 5px 2px #a855f7;animation:pulse 3.5s infinite 0.3s"></div>
+        <div style="position:absolute;width:2px;height:2px;background:#8b5cf6;border-radius:50%;top:60%;left:50%;box-shadow:0 0 6px 2px #8b5cf6;animation:pulse 2.8s infinite 0.7s"></div>
+      </div>
+      <div style="font-family:system-ui;font-size:28px;font-weight:800;letter-spacing:0.3em;color:#e9d5ff;text-shadow:0 0 40px rgba(168,85,247,0.5);z-index:1;">MYTHOS</div>
+    </div>
+    <style>@keyframes pulse{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}</style>
+    <div class="card-body">
+      <h3>A. 星空パーティクル</h3>
+      <p>深い紫〜黒のグラデーションに浮遊する光の粒子。宇宙的な広がりと神秘感。CSSアニメーションで軽量。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:200px;background:#000;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 40%, rgba(139,92,246,0.15) 0%, transparent 50%),radial-gradient(circle at 70% 60%, rgba(168,85,247,0.1) 0%, transparent 50%);"></div>
+      <!-- Concentric rings -->
+      <div style="position:absolute;width:300px;height:300px;border:1px solid rgba(168,85,247,0.15);border-radius:50%;animation:spin 20s linear infinite"></div>
+      <div style="position:absolute;width:200px;height:200px;border:1px solid rgba(139,92,246,0.2);border-radius:50%;animation:spin 15s linear infinite reverse"></div>
+      <div style="position:absolute;width:120px;height:120px;border:1px solid rgba(196,181,253,0.15);border-radius:50%;animation:spin 10s linear infinite"></div>
+      <div style="position:absolute;width:8px;height:8px;background:radial-gradient(circle,#c084fc,transparent);border-radius:50%;box-shadow:0 0 20px 8px rgba(168,85,247,0.4);"></div>
+      <div style="font-family:system-ui;font-size:28px;font-weight:800;letter-spacing:0.3em;color:#f5f3ff;z-index:1;text-shadow:0 0 60px rgba(168,85,247,0.6);">MYTHOS</div>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    <div class="card-body">
+      <h3>B. オービタルリング</h3>
+      <p>中心から広がる同心円のリングが回転。核心に迫るような緊張感と、制御された力のイメージ。ミニマルだが印象的。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="height:200px;background:linear-gradient(180deg, #0a0014 0%, #1a0530 50%, #0d0020 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <!-- Nebula blobs -->
+      <div style="position:absolute;width:200px;height:200px;background:radial-gradient(ellipse,rgba(139,92,246,0.2),transparent 70%);top:-30px;left:-20px;filter:blur(30px);animation:float1 8s ease-in-out infinite"></div>
+      <div style="position:absolute;width:250px;height:180px;background:radial-gradient(ellipse,rgba(168,85,247,0.15),transparent 70%);bottom:-40px;right:-30px;filter:blur(40px);animation:float2 10s ease-in-out infinite"></div>
+      <div style="position:absolute;width:150px;height:150px;background:radial-gradient(ellipse,rgba(196,181,253,0.1),transparent 70%);top:20px;right:40px;filter:blur(25px);animation:float1 12s ease-in-out infinite reverse"></div>
+      <div style="font-family:system-ui;font-size:28px;font-weight:800;letter-spacing:0.3em;color:#ede9fe;z-index:1;text-shadow:0 0 80px rgba(139,92,246,0.4);">MYTHOS</div>
+    </div>
+    <style>
+      @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-15px)}}
+      @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-15px,20px)}}
+    </style>
+    <div class="card-body">
+      <h3>C. ネビュラ（星雲）</h3>
+      <p>紫の星雲がゆっくりと漂うぼかしグラデーション。有機的で壮大な宇宙感。テキストが霧の中から浮かび上がる印象。</p>
+    </div>
+  </div>
+</div>

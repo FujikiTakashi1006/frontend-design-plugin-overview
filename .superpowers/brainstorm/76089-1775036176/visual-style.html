@@ -1,0 +1,58 @@
+<h2>デザインの方向性</h2>
+<p class="subtitle">この架空AI企業のWebサイト、どんなトーンが合いますか？</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0a;padding:2rem;text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+      <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6,#a78bfa);display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <div style="color:#f0f0f0;font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;">NeuralArc</div>
+      <div style="color:#888;font-size:0.75rem;line-height:1.6;">Redefining Intelligence</div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+        <span style="background:#6366f1;color:white;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;">NLP</span>
+        <span style="background:rgba(99,102,241,0.15);color:#a78bfa;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;border:1px solid rgba(99,102,241,0.3);">Vision</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. ダーク & テック</h3>
+      <p>黒基調にパープル/バイオレットのアクセント。ニューラルネットやパーティクルなどのアニメーション。先進的・未来的な印象。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fafbfc;padding:2rem;text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+      <div style="width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#0ea5e9,#2563eb);display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div style="color:#111;font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;">Synapse AI</div>
+      <div style="color:#666;font-size:0.75rem;line-height:1.6;">Intelligent Solutions</div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+        <span style="background:#2563eb;color:white;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;">Platform</span>
+        <span style="background:rgba(37,99,235,0.08);color:#2563eb;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;border:1px solid rgba(37,99,235,0.2);">API</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. ライト & クリーン</h3>
+      <p>白基調にブルー系アクセント。余白を活かしたミニマルデザイン。信頼感・透明性のある企業イメージ。大手テック企業風。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#0f172a,#1e293b);padding:2rem;text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+      <div style="width:60px;height:60px;border-radius:14px;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div style="color:#e2e8f0;font-size:1.1rem;font-weight:600;letter-spacing:-0.02em;">Cortex Labs</div>
+      <div style="color:#94a3b8;font-size:0.75rem;line-height:1.6;">Build Smarter, Ship Faster</div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+        <span style="background:linear-gradient(135deg,#10b981,#06b6d4);color:white;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;">MLOps</span>
+        <span style="background:rgba(16,185,129,0.1);color:#10b981;font-size:0.6rem;padding:0.2rem 0.6rem;border-radius:12px;border:1px solid rgba(16,185,129,0.25);">DevTools</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. ダーク & プレミアム</h3>
+      <p>ネイビー/ダークブルー基調にグリーン・シアンのグラデーション。洗練されたプロフェッショナル感。スタートアップ的なエネルギーも。</p>
+    </div>
+  </div>
+</div>
