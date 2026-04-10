@@ -187,33 +187,33 @@ function Section04() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 240 150" role="img" aria-label="同調圧力：集団と同じ意見は安全、ズレると脳がエラーと判定する">
+              <svg viewBox="0 0 260 160" role="img" aria-label="同調圧力：集団と同じ意見は安全、ズレると脳がエラーと判定する">
                 {/* Group consensus box */}
-                <rect className="conform-box" x={15} y={20} width={140} height={55} rx={8} fill="var(--accent)" opacity={0.06} stroke="var(--accent-light)" strokeWidth={1} />
-                <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={85} y={16} textAnchor="middle">集団の多数派</text>
-                {/* Consensus nodes: all say "A" */}
-                {[35, 65, 95, 125].map((x, i) => (
+                <rect className="conform-box" x={10} y={20} width={155} height={55} rx={8} fill="var(--accent)" opacity={0.06} stroke="var(--accent-light)" strokeWidth={1} />
+                <text fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--accent)" x={87} y={15} textAnchor="middle">集団の多数派</text>
+                {/* Consensus nodes */}
+                {[30, 60, 90, 120, 145].map((x, i) => (
                   <g key={i} className="conform-person" style={{ animationDelay: `${0.3 + i * 0.12}s` }}>
-                    <circle cx={x} cy={47} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.2} />
-                    <text fontFamily="'Cormorant Garamond',serif" fontSize={13} fill="var(--accent)" x={x} y={52} textAnchor="middle">A</text>
+                    <circle cx={x} cy={47} r={10} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.2} />
+                    <text fontFamily="'Cormorant Garamond',serif" fontSize={12} fill="var(--accent)" x={x} y={51} textAnchor="middle">A</text>
                   </g>
                 ))}
-                {/* Outlier: says "B" */}
+                {/* Outlier */}
                 <g className="outlier-person">
-                  <circle cx={200} cy={47} r={14} fill="var(--surface)" stroke="var(--error)" strokeWidth={1.5} />
-                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={200} y={52} textAnchor="middle">B</text>
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={200} y={72} textAnchor="middle">あなた</text>
+                  <circle cx={215} cy={47} r={14} fill="var(--surface)" stroke="var(--error)" strokeWidth={1.5} />
+                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={215} y={52} textAnchor="middle">B</text>
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={215} y={18} textAnchor="middle">あなた</text>
                 </g>
-                {/* Brain error detection */}
+                {/* Error detection area */}
                 <g className="error-zone">
-                  <rect x={130} y={90} width={100} height={45} rx={6} fill="none" stroke="var(--error)" strokeWidth={1} strokeDasharray="4 2" opacity={0.6} />
-                  <circle className="error-signal" cx={150} cy={112} r={8} />
-                  <text className="error-text" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fontWeight={500} x={150} y={115} textAnchor="middle">!</text>
-                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--error)" x={195} y={110} textAnchor="start">脳の反応：</text>
-                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fontWeight={500} fill="var(--error)" x={195} y={123} textAnchor="start">エラー検出</text>
+                  <rect x={50} y={95} width={160} height={48} rx={8} fill="var(--error)" opacity={0.04} stroke="var(--error)" strokeWidth={1} strokeDasharray="4 2" />
+                  <circle className="error-signal" cx={85} cy={119} r={10} />
+                  <text className="error-text" fontFamily="'Noto Sans JP',sans-serif" fontSize={10} fontWeight={700} x={85} y={123} textAnchor="middle">!</text>
+                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--error)" x={110} y={115} textAnchor="start">脳の反応</text>
+                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={10} fontWeight={500} fill="var(--error)" x={110} y={131} textAnchor="start">「みんなと違う＝エラー」</text>
                 </g>
-                {/* Arrow from outlier to error zone */}
-                <path className="error-arrow" d="M200,65 L180,88" fill="none" stroke="var(--error)" strokeWidth={1} markerEnd="url(#arrowErr)" />
+                {/* Arrow from outlier to error */}
+                <path className="error-arrow" d="M215,65 L150,95" fill="none" stroke="var(--error)" strokeWidth={1.2} markerEnd="url(#arrowErr)" />
                 <defs>
                   <marker id="arrowErr" markerWidth={6} markerHeight={4} refX={5} refY={2} orient="auto">
                     <path d="M0,0 L6,2 L0,4" fill="var(--error)" />
