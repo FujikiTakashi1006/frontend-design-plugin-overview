@@ -70,16 +70,22 @@ function Section02() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 200 160" role="img" aria-label="社会脳仮説：脳のシルエットの周囲に人々のドットが広がり、ダンバー数150を示す">
-                <path className="brain-outline" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
-                <path className="brain-fill" d="M70,80 C70,50 85,35 100,35 C115,35 130,50 130,80 C130,100 120,115 100,115 C80,115 70,100 70,80Z" />
-                <circle className="group-circle g1" cx={100} cy={80} r={35} />
-                <circle className="group-circle g2" cx={100} cy={80} r={50} />
-                <circle className="group-circle g3" cx={100} cy={80} r={65} />
-                {[[72,55],[128,55],[60,80],[140,80],[55,105],[145,105],[42,65],[158,65]].map(([cx,cy], i) => (
-                  <circle key={i} className={`person-dot d${i+1}`} cx={cx} cy={cy} r={i < 4 ? 2.5 : i < 6 ? 2 : 1.5} />
-                ))}
-                <text className="num-150" x={100} y={148} textAnchor="middle">150</text>
+              <svg viewBox="0 0 240 160" role="img" aria-label="社会脳仮説：脳のエネルギーの大半は人間関係の処理に使われている">
+                {/* Brain shape (more realistic silhouette) */}
+                <path className="brain-outline" d="M120,25 C135,25 155,30 160,50 C165,65 158,78 150,82 C155,90 155,105 145,115 C135,125 115,130 100,128 C85,130 70,125 60,115 C50,105 50,90 55,82 C47,78 40,65 45,50 C50,30 70,25 85,25 C90,22 95,20 100,20 C105,20 115,22 120,25Z" fill="var(--accent)" opacity={0.08} stroke="var(--accent-light)" strokeWidth={1.2} />
+                {/* Center divider (brain hemispheres) */}
+                <path d="M100,25 C102,50 98,80 100,125" fill="none" stroke="var(--accent-light)" strokeWidth={0.6} opacity={0.4} />
+                {/* Pie chart inside brain showing 80% social */}
+                <circle className="brain-pie-bg" cx={100} cy={75} r={25} fill="none" stroke="var(--border)" strokeWidth={8} />
+                <circle className="brain-pie" cx={100} cy={75} r={25} fill="none" stroke="var(--accent)" strokeWidth={8} strokeDasharray="126" strokeDashoffset="25" strokeLinecap="round" />
+                <text className="brain-pct" fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--accent)" x={100} y={80} textAnchor="middle">80%</text>
+                {/* Labels */}
+                <text className="brain-label-social" fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={100} y={115} textAnchor="middle">人間関係の処理</text>
+                <text className="brain-label-other" fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={170} y={50} textAnchor="start">道具・狩り</text>
+                <line x1={160} y1={50} x2={128} y2={60} stroke="var(--muted)" strokeWidth={0.5} />
+                {/* Dunbar number */}
+                <text className="num-150" fontFamily="'Cormorant Garamond',serif" fontSize={18} fill="var(--accent)" x={100} y={150} textAnchor="middle">≈ 150人</text>
+                <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={100} y={160} textAnchor="middle">安定的に関係を維持できる人数</text>
               </svg>
             </div>
           </div>
@@ -181,17 +187,38 @@ function Section04() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 200 140" role="img" aria-label="同調圧力の波：整列するドットと、外れたドットにERRORシグナルが点滅">
-                <path className="wave-line w1" d="M10,40 Q50,30 100,40 Q150,50 190,40" />
-                <path className="wave-line w2" d="M10,70 Q50,60 100,70 Q150,80 190,70" />
-                <path className="wave-line w3" d="M10,100 Q50,90 100,100 Q150,110 190,100" />
-                {[[30,38],[60,35],[90,40],[120,43],[150,40]].map(([cx,cy], i) => (
-                  <circle key={i} className="conformity-dot" cx={cx} cy={cy} r={3}
-                    style={{ animationDelay: `${0.8 + i * 0.2}s` }} />
+              <svg viewBox="0 0 240 150" role="img" aria-label="同調圧力：集団と同じ意見は安全、ズレると脳がエラーと判定する">
+                {/* Group consensus box */}
+                <rect className="conform-box" x={15} y={20} width={140} height={55} rx={8} fill="var(--accent)" opacity={0.06} stroke="var(--accent-light)" strokeWidth={1} />
+                <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={85} y={16} textAnchor="middle">集団の多数派</text>
+                {/* Consensus nodes: all say "A" */}
+                {[35, 65, 95, 125].map((x, i) => (
+                  <g key={i} className="conform-person" style={{ animationDelay: `${0.3 + i * 0.12}s` }}>
+                    <circle cx={x} cy={47} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.2} />
+                    <text fontFamily="'Cormorant Garamond',serif" fontSize={13} fill="var(--accent)" x={x} y={52} textAnchor="middle">A</text>
+                  </g>
                 ))}
-                <circle className="outlier" cx={170} cy={20} r={4} />
-                <circle className="error-signal" cx={170} cy={20} r={12} />
-                <text className="error-text" fontFamily="'Noto Sans JP', sans-serif" fontSize={7} x={170} y={10} textAnchor="middle">ERROR</text>
+                {/* Outlier: says "B" */}
+                <g className="outlier-person">
+                  <circle cx={200} cy={47} r={14} fill="var(--surface)" stroke="var(--error)" strokeWidth={1.5} />
+                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={200} y={52} textAnchor="middle">B</text>
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={200} y={72} textAnchor="middle">あなた</text>
+                </g>
+                {/* Brain error detection */}
+                <g className="error-zone">
+                  <rect x={130} y={90} width={100} height={45} rx={6} fill="none" stroke="var(--error)" strokeWidth={1} strokeDasharray="4 2" opacity={0.6} />
+                  <circle className="error-signal" cx={150} cy={112} r={8} />
+                  <text className="error-text" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fontWeight={500} x={150} y={115} textAnchor="middle">!</text>
+                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--error)" x={195} y={110} textAnchor="start">脳の反応：</text>
+                  <text className="error-label" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fontWeight={500} fill="var(--error)" x={195} y={123} textAnchor="start">エラー検出</text>
+                </g>
+                {/* Arrow from outlier to error zone */}
+                <path className="error-arrow" d="M200,65 L180,88" fill="none" stroke="var(--error)" strokeWidth={1} markerEnd="url(#arrowErr)" />
+                <defs>
+                  <marker id="arrowErr" markerWidth={6} markerHeight={4} refX={5} refY={2} orient="auto">
+                    <path d="M0,0 L6,2 L0,4" fill="var(--error)" />
+                  </marker>
+                </defs>
               </svg>
             </div>
           </div>
@@ -234,20 +261,44 @@ function Section05() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 200 160" role="img" aria-label="社会的伝染の波紋：中心から友人、友人の友人へ影響が伝播し、57%のリスク上昇を示す">
-                <circle cx={100} cy={80} r={6} fill="var(--accent)" opacity={0.9} />
-                {[0,1,2].map(i => (
-                  <circle key={i} className={`ripple r${i+1}`} cx={100} cy={80} r={8} />
-                ))}
-                {[[60,50],[140,50],[55,100],[145,100]].map(([cx,cy], i) => (
-                  <circle key={i} className="spread-node" cx={cx} cy={cy} r={4}
-                    style={{ animationDelay: `${1 + i * 0.2}s` }} />
-                ))}
-                {[[30,30],[170,30],[25,120],[175,120]].map(([cx,cy], i) => (
-                  <circle key={i} className="spread-node" cx={cx} cy={cy} r={3}
-                    style={{ animationDelay: `${2 + i * 0.2}s` }} />
-                ))}
-                <text className="percent-text" x={100} y={148} textAnchor="middle">57%</text>
+              <svg viewBox="0 0 260 160" role="img" aria-label="社会的伝染：友人の状態が自分に伝染し、さらにその先の人にも広がる連鎖">
+                {/* Person A: source */}
+                <g className="contagion-src">
+                  <circle cx={40} cy={55} r={16} fill="var(--accent)" opacity={0.15} stroke="var(--accent)" strokeWidth={1.2} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={9} fill="var(--accent)" x={40} y={59} textAnchor="middle">友人</text>
+                </g>
+                {/* Arrow A → You */}
+                <path className="contagion-arrow a1" d="M60,55 L88,55" fill="none" stroke="var(--accent)" strokeWidth={1.5} markerEnd="url(#arrowhead)" />
+                {/* You */}
+                <g className="contagion-you">
+                  <circle cx={115} cy={55} r={18} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
+                  <circle className="contagion-fill-you" cx={115} cy={55} r={18} fill="var(--accent)" opacity={0} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={9} fill="var(--ink)" x={115} y={59} textAnchor="middle">あなた</text>
+                </g>
+                {/* Arrow You → B */}
+                <path className="contagion-arrow a2" d="M137,55 L163,55" fill="none" stroke="var(--accent)" strokeWidth={1.5} markerEnd="url(#arrowhead)" />
+                {/* Person B */}
+                <g className="contagion-b">
+                  <circle cx={185} cy={55} r={14} fill="var(--surface)" stroke="var(--accent-light)" strokeWidth={1.2} />
+                  <circle className="contagion-fill-b" cx={185} cy={55} r={14} fill="var(--accent)" opacity={0} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={185} y={52} textAnchor="middle">友人の</text>
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={185} y={62} textAnchor="middle">友人</text>
+                </g>
+                {/* Arrow B → C */}
+                <path className="contagion-arrow a3" d="M203,55 L223,55" fill="none" stroke="var(--accent-light)" strokeWidth={1} markerEnd="url(#arrowhead)" />
+                {/* Person C */}
+                <g className="contagion-c">
+                  <circle cx={240} cy={55} r={10} fill="var(--surface)" stroke="var(--accent-light)" strokeWidth={0.8} opacity={0.5} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={240} y={58} textAnchor="middle" opacity={0.5}>...</text>
+                </g>
+                {/* Stats */}
+                <text className="contagion-stat" fontFamily="'Cormorant Garamond',serif" fontSize={22} fill="var(--accent)" x={130} y={120} textAnchor="middle">+57%</text>
+                <text className="contagion-stat-sub" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--muted)" x={130} y={138} textAnchor="middle">友人が肥満 → 自分の肥満リスク上昇</text>
+                <defs>
+                  <marker id="arrowhead" markerWidth={6} markerHeight={4} refX={5} refY={2} orient="auto">
+                    <path d="M0,0 L6,2 L0,4" fill="var(--accent)" />
+                  </marker>
+                </defs>
               </svg>
             </div>
           </div>
@@ -288,25 +339,38 @@ function Section06() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 200 160" role="img" aria-label="ソシオメーター：自尊心ゲージの針が否定的環境から肯定的環境へ振れる">
-                <path className="gauge-bg" d="M50,120 A60,60 0 0,1 150,120" />
-                <path className="gauge-fill" d="M50,120 A60,60 0 0,1 150,120" />
-                <line className="gauge-needle" x1={100} y1={120} x2={100} y2={65} />
-                <circle cx={100} cy={120} r={4} fill="var(--ink)" />
-                <text fontFamily="'Noto Sans JP', sans-serif" fontSize={7} fill="var(--muted)" x={40} y={135}>低</text>
-                <text fontFamily="'Noto Sans JP', sans-serif" fontSize={7} fill="var(--muted)" x={155} y={135}>高</text>
-                {/* Negative env (X mark) */}
-                <g className="env-icon neg">
-                  <circle cx={30} cy={90} r={8} fill="none" stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
-                  <line x1={27} y1={87} x2={33} y2={93} stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
-                  <line x1={33} y1={87} x2={27} y2={93} stroke="var(--error)" strokeWidth={0.8} opacity={0.5} />
+              <svg viewBox="0 0 260 150" role="img" aria-label="ソシオメーター：否定的な環境では自信が下がり、肯定的な環境では上がる">
+                {/* Left scene: rejection */}
+                <g className="socio-left">
+                  <rect x={10} y={15} width={110} height={95} rx={8} fill="none" stroke="var(--error)" strokeWidth={0.8} opacity={0.3} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--error)" x={65} y={12} textAnchor="middle" opacity={0.7}>否定的な環境</text>
+                  {/* Rejecting circles */}
+                  {[30, 65, 100].map((x, i) => (
+                    <circle key={i} cx={x} cy={45} r={10} fill="var(--error)" opacity={0.08} stroke="var(--error)" strokeWidth={0.8} />
+                  ))}
+                  {/* Small "you" */}
+                  <circle cx={65} cy={80} r={8} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1} opacity={0.4} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={65} y={83} textAnchor="middle">自分</text>
+                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={65} y={105} textAnchor="middle" opacity={0.7}>▼</text>
                 </g>
-                {/* Positive env */}
-                <g className="env-icon pos">
-                  <circle cx={170} cy={90} r={8} fill="none" stroke="var(--accent)" strokeWidth={0.8} />
-                  <circle cx={170} cy={90} r={3} fill="var(--accent)" opacity={0.3} />
+                {/* Arrow */}
+                <path className="socio-divider" d="M125,60 L135,60" fill="none" stroke="var(--muted)" strokeWidth={1} />
+                <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={130} y={75} textAnchor="middle">vs</text>
+                {/* Right scene: acceptance */}
+                <g className="socio-right">
+                  <rect x={140} y={15} width={110} height={95} rx={8} fill="none" stroke="var(--accent)" strokeWidth={1} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={195} y={12} textAnchor="middle">肯定的な環境</text>
+                  {/* Welcoming circles */}
+                  {[160, 195, 230].map((x, i) => (
+                    <circle key={i} cx={x} cy={45} r={10} fill="var(--accent)" opacity={0.1} stroke="var(--accent)" strokeWidth={1} />
+                  ))}
+                  {/* Big "you" */}
+                  <circle cx={195} cy={80} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={195} y={83} textAnchor="middle">自分</text>
+                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--accent)" x={195} y={105} textAnchor="middle">▲</text>
                 </g>
-                <text className="socio-label" fontFamily="'Cormorant Garamond', serif" fontSize={10} fill="var(--accent)" x={100} y={155} textAnchor="middle">sociometer</text>
+                {/* Bottom */}
+                <text className="socio-bottom" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--muted)" x={130} y={140} textAnchor="middle">自信 ＝ 周囲からの受容度メーター</text>
               </svg>
             </div>
           </div>
@@ -346,24 +410,39 @@ function Section07() {
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
-              <svg viewBox="0 0 200 140" role="img" aria-label="ネットワーク再構成：古い接続が薄れ、新しい接続が描かれる">
-                {/* Old network */}
-                <line className="old-path" x1={100} y1={70} x2={50} y2={30} />
-                <line className="old-path" x1={100} y1={70} x2={40} y2={80} />
-                <line className="old-path" x1={100} y1={70} x2={60} y2={115} />
-                <circle cx={50} cy={30} r={3} fill="var(--border)" opacity={0.4} />
-                <circle cx={40} cy={80} r={3} fill="var(--border)" opacity={0.4} />
-                <circle cx={60} cy={115} r={3} fill="var(--border)" opacity={0.4} />
-                {/* Center */}
-                <circle cx={100} cy={70} r={6} fill="var(--accent)" opacity={0.9} />
-                {/* New network */}
-                <path className="new-path" d="M100,70 L150,35" />
-                <path className="new-path" d="M100,70 L160,80" style={{ animationDelay: '1.3s' }} />
-                <path className="new-path" d="M100,70 L140,115" style={{ animationDelay: '1.6s' }} />
-                <circle className="transform-node t1" cx={150} cy={35} r={4} />
-                <circle className="transform-node t2" cx={160} cy={80} r={4} />
-                <circle className="transform-node t3" cx={140} cy={115} r={4} />
-                <text className="reconnect-label" fontFamily="'Cormorant Garamond', serif" fontSize={10} fill="var(--accent)" x={100} y={12} textAnchor="middle">re:connect</text>
+              <svg viewBox="0 0 260 140" role="img" aria-label="環境を変える＝自分を変える：周囲の入力が変われば出力（行動・自信）も変わる">
+                {/* Left: old environment */}
+                <g className="env-old">
+                  <rect x={10} y={15} width={95} height={90} rx={8} fill="var(--border)" opacity={0.1} stroke="var(--border)" strokeWidth={1} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={57} y={12} textAnchor="middle">現在の環境</text>
+                  {[30, 57, 84].map((x, i) => (
+                    <circle key={i} cx={x} cy={45} r={9} fill="var(--border)" opacity={0.15} stroke="var(--border)" strokeWidth={0.8} />
+                  ))}
+                  <circle cx={57} cy={78} r={10} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1} opacity={0.4} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={57} y={81} textAnchor="middle">自分</text>
+                </g>
+                {/* Arrow */}
+                <g className="env-arrow">
+                  <path d="M112,60 L148,60" fill="none" stroke="var(--accent)" strokeWidth={2} markerEnd="url(#arrowhead2)" />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={130} y={52} textAnchor="middle">変える</text>
+                </g>
+                {/* Right: new environment */}
+                <g className="env-new">
+                  <rect x={155} y={15} width={95} height={90} rx={8} fill="var(--accent)" opacity={0.06} stroke="var(--accent)" strokeWidth={1.2} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={202} y={12} textAnchor="middle">新しい環境</text>
+                  {[175, 202, 229].map((x, i) => (
+                    <circle key={i} cx={x} cy={45} r={9} fill="var(--accent)" opacity={0.12} stroke="var(--accent)" strokeWidth={1} />
+                  ))}
+                  <circle cx={202} cy={78} r={12} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.5} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={202} y={81} textAnchor="middle">自分</text>
+                </g>
+                {/* Bottom */}
+                <text className="env-bottom" fontFamily="'Noto Sans JP',sans-serif" fontSize={9} fontWeight={500} fill="var(--accent)" x={130} y={130} textAnchor="middle">周りを変える ＝ 自分が変わる</text>
+                <defs>
+                  <marker id="arrowhead2" markerWidth={8} markerHeight={6} refX={7} refY={3} orient="auto">
+                    <path d="M0,0 L8,3 L0,6" fill="var(--accent)" />
+                  </marker>
+                </defs>
               </svg>
             </div>
           </div>
@@ -546,9 +625,6 @@ export default function PersonalityPage() {
         }
 
         /* ─── Section 02 SVG Keyframes ─── */
-        @keyframes brainGrow { to { opacity: 0.15; } }
-        @keyframes ringAppear { to { opacity: 0.5; } }
-        @keyframes dotIn { to { opacity: 0.7; } }
         @keyframes fadeIn { to { opacity: 1; } }
 
         /* ─── Reveal ─── */
@@ -594,55 +670,19 @@ export default function PersonalityPage() {
         }
 
         /* ─── Section 02 SVG Classes ─── */
-        .brain-outline {
-          stroke: var(--accent-light);
-          stroke-width: 1.5;
-          fill: none;
-        }
-        .brain-fill {
-          fill: var(--accent);
-          opacity: 0;
-        }
-        .svg-animate.visible .brain-fill {
-          animation: brainGrow 2s ease 0.5s forwards;
-        }
-        .group-circle {
-          fill: none;
-          stroke: var(--accent);
-          stroke-width: 1;
-          stroke-dasharray: 4 2;
-          opacity: 0;
-        }
-        .svg-animate.visible .group-circle.g1 {
-          animation: ringAppear 1s ease 1s forwards;
-        }
-        .svg-animate.visible .group-circle.g2 {
-          animation: ringAppear 1s ease 1.5s forwards;
-        }
-        .svg-animate.visible .group-circle.g3 {
-          animation: ringAppear 1s ease 2s forwards;
-        }
-        .person-dot {
-          fill: var(--accent);
-          opacity: 0;
-        }
-        .svg-animate.visible .person-dot.d1 { animation: dotIn 0.5s ease 1.2s forwards; }
-        .svg-animate.visible .person-dot.d2 { animation: dotIn 0.5s ease 1.4s forwards; }
-        .svg-animate.visible .person-dot.d3 { animation: dotIn 0.5s ease 1.6s forwards; }
-        .svg-animate.visible .person-dot.d4 { animation: dotIn 0.5s ease 1.8s forwards; }
-        .svg-animate.visible .person-dot.d5 { animation: dotIn 0.5s ease 2.0s forwards; }
-        .svg-animate.visible .person-dot.d6 { animation: dotIn 0.5s ease 2.2s forwards; }
-        .svg-animate.visible .person-dot.d7 { animation: dotIn 0.5s ease 2.4s forwards; }
-        .svg-animate.visible .person-dot.d8 { animation: dotIn 0.5s ease 2.6s forwards; }
-        .num-150 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 16px;
-          fill: var(--accent);
-          opacity: 0;
-        }
-        .svg-animate.visible .num-150 {
-          animation: fadeIn 1s ease 2.5s forwards;
-        }
+        .brain-pie-bg { opacity: 0; }
+        .svg-animate.visible .brain-pie-bg { animation: fadeIn 0.6s ease 0.5s forwards; }
+        .brain-pie { opacity: 0; stroke-dashoffset: 126; }
+        .svg-animate.visible .brain-pie { animation: pieReveal 1.5s ease 1s forwards; }
+        @keyframes pieReveal { to { opacity: 1; stroke-dashoffset: 25; } }
+        .brain-pct { opacity: 0; }
+        .svg-animate.visible .brain-pct { animation: fadeIn 0.6s ease 2s forwards; }
+        .brain-label-social { opacity: 0; }
+        .svg-animate.visible .brain-label-social { animation: fadeIn 0.6s ease 2.2s forwards; }
+        .brain-label-other { opacity: 0; }
+        .svg-animate.visible .brain-label-other { animation: fadeIn 0.6s ease 1.5s forwards; }
+        .num-150 { opacity: 0; }
+        .svg-animate.visible .num-150 { animation: fadeIn 0.8s ease 2.5s forwards; }
 
         /* ─── Section 03 SVG Classes ─── */
         .mask-face { stroke: var(--accent-light); stroke-width: 1.2; fill: none; }
@@ -660,62 +700,67 @@ export default function PersonalityPage() {
         .svg-animate.visible .ifthen-label { animation: fadeIn 0.8s ease 2.8s forwards; }
 
         /* ─── Section 04 SVG Classes ─── */
-        .wave-line { fill: none; stroke: var(--accent-light); stroke-width: 1; opacity: 0; }
-        .svg-animate.visible .wave-line.w1 { animation: waveIn 1.5s ease 0.3s forwards; }
-        .svg-animate.visible .wave-line.w2 { animation: waveIn 1.5s ease 0.8s forwards; }
-        .svg-animate.visible .wave-line.w3 { animation: waveIn 1.5s ease 1.3s forwards; }
-        @keyframes waveIn { to { opacity: 0.5; } }
-        .conformity-dot { fill: var(--accent); opacity: 0; }
-        .svg-animate.visible .conformity-dot { animation: dotAlign 0.5s ease forwards; }
-        @keyframes dotAlign { to { opacity: 0.7; } }
-        .outlier { fill: var(--error); opacity: 0; }
-        .svg-animate.visible .outlier { animation: outlierPulse 2s ease-in-out 2s infinite; }
-        @keyframes outlierPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 0.9; } }
-        .error-signal { stroke: var(--error); stroke-width: 0.8; fill: none; opacity: 0; stroke-dasharray: 3 2; }
-        .svg-animate.visible .error-signal { animation: errorFlash 1.5s ease 2.5s infinite; }
-        @keyframes errorFlash { 0%,100% { opacity: 0; } 50% { opacity: 0.6; } }
+        .conform-box { opacity: 0; }
+        .svg-animate.visible .conform-box { animation: fadeIn 0.6s ease 0.2s forwards; }
+        .conform-person { opacity: 0; }
+        .svg-animate.visible .conform-person { animation: fadeIn 0.5s ease forwards; }
+        .outlier-person { opacity: 0; }
+        .svg-animate.visible .outlier-person { animation: fadeIn 0.6s ease 1s forwards; }
+        .error-zone { opacity: 0; }
+        .svg-animate.visible .error-zone { animation: fadeIn 0.6s ease 1.6s forwards; }
+        .error-signal { stroke: var(--error); stroke-width: 1.2; fill: none; opacity: 0; }
+        .svg-animate.visible .error-signal { animation: errorPulse 1.5s ease 1.8s infinite; }
+        @keyframes errorPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.7; } }
         .error-text { fill: var(--error); opacity: 0; }
-        .svg-animate.visible .error-text { animation: fadeIn 0.6s ease 2.5s forwards; }
+        .svg-animate.visible .error-text { animation: fadeIn 0.5s ease 1.8s forwards; }
+        .error-label { opacity: 0; }
+        .svg-animate.visible .error-label { animation: fadeIn 0.6s ease 2s forwards; }
+        .error-arrow { opacity: 0; }
+        .svg-animate.visible .error-arrow { animation: fadeIn 0.5s ease 1.4s forwards; }
 
         /* ─── Section 05 SVG Classes ─── */
-        .ripple { fill: none; stroke: var(--accent); stroke-width: 0.8; opacity: 0; }
-        .svg-animate.visible .ripple.r1 { animation: rippleOut 3s ease 0.5s infinite; }
-        .svg-animate.visible .ripple.r2 { animation: rippleOut 3s ease 1.5s infinite; }
-        .svg-animate.visible .ripple.r3 { animation: rippleOut 3s ease 2.5s infinite; }
-        @keyframes rippleOut { 0% { r: 8; opacity: 0.5; } 100% { r: 80; opacity: 0; } }
-        .spread-node { fill: var(--accent); opacity: 0.3; }
-        .svg-animate.visible .spread-node { animation: nodeActivate 0.5s ease forwards; }
-        @keyframes nodeActivate { to { opacity: 0.8; } }
-        .percent-text { font-family: 'Cormorant Garamond', serif; font-size: 14px; fill: var(--accent); opacity: 0; }
-        .svg-animate.visible .percent-text { animation: fadeIn 0.8s ease 2s forwards; }
+        .contagion-src { opacity: 0; }
+        .svg-animate.visible .contagion-src { animation: fadeIn 0.6s ease 0.3s forwards; }
+        .contagion-arrow { opacity: 0; stroke-dasharray: 30; stroke-dashoffset: 30; }
+        .svg-animate.visible .contagion-arrow.a1 { animation: drawArrow 0.6s ease 0.8s forwards; }
+        .svg-animate.visible .contagion-arrow.a2 { animation: drawArrow 0.6s ease 1.8s forwards; }
+        .svg-animate.visible .contagion-arrow.a3 { animation: drawArrow 0.6s ease 2.8s forwards; }
+        @keyframes drawArrow { to { opacity: 0.7; stroke-dashoffset: 0; } }
+        .contagion-you { opacity: 0; }
+        .svg-animate.visible .contagion-you { animation: fadeIn 0.5s ease 0.5s forwards; }
+        .contagion-fill-you { opacity: 0; }
+        .svg-animate.visible .contagion-fill-you { animation: fillIn 0.8s ease 1.4s forwards; }
+        @keyframes fillIn { to { opacity: 0.3; } }
+        .contagion-b { opacity: 0; }
+        .svg-animate.visible .contagion-b { animation: fadeIn 0.5s ease 1.6s forwards; }
+        .contagion-fill-b { opacity: 0; }
+        .svg-animate.visible .contagion-fill-b { animation: fillIn 0.8s ease 2.4s forwards; }
+        .contagion-c { opacity: 0; }
+        .svg-animate.visible .contagion-c { animation: fadeIn 0.5s ease 2.6s forwards; }
+        .contagion-stat { opacity: 0; }
+        .svg-animate.visible .contagion-stat { animation: fadeIn 0.8s ease 1.6s forwards; }
+        .contagion-stat-sub { opacity: 0; }
+        .svg-animate.visible .contagion-stat-sub { animation: fadeIn 0.6s ease 2s forwards; }
 
         /* ─── Section 06 SVG Classes ─── */
-        .gauge-bg { fill: none; stroke: var(--border); stroke-width: 4; }
-        .gauge-fill { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 126; stroke-dashoffset: 126; }
-        .svg-animate.visible .gauge-fill { animation: gaugeUp 2s ease 1s forwards; }
-        @keyframes gaugeUp { to { stroke-dashoffset: 40; } }
-        .gauge-needle { stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; transform-origin: 100px 120px; }
-        .svg-animate.visible .gauge-needle { animation: needleSwing 3s ease 0.5s forwards; }
-        @keyframes needleSwing { 0% { transform: rotate(-60deg); } 60% { transform: rotate(30deg); } 100% { transform: rotate(15deg); } }
-        .env-icon { opacity: 0; }
-        .svg-animate.visible .env-icon.neg { animation: envIn 0.5s ease 0.5s forwards; }
-        .svg-animate.visible .env-icon.pos { animation: envIn 0.5s ease 2s forwards; }
-        @keyframes envIn { to { opacity: 1; } }
-        .socio-label { opacity: 0; }
-        .svg-animate.visible .socio-label { animation: fadeIn 0.8s ease 2.5s forwards; }
+        .socio-left { opacity: 0; }
+        .svg-animate.visible .socio-left { animation: fadeIn 0.8s ease 0.3s forwards; }
+        .socio-divider { opacity: 0; }
+        .svg-animate.visible .socio-divider { animation: fadeIn 0.6s ease 0.8s forwards; }
+        .socio-right { opacity: 0; }
+        .svg-animate.visible .socio-right { animation: fadeIn 0.8s ease 1.2s forwards; }
+        .socio-bottom { opacity: 0; }
+        .svg-animate.visible .socio-bottom { animation: fadeIn 0.6s ease 2s forwards; }
 
         /* ─── Section 07 SVG Classes ─── */
-        .old-path { stroke: var(--border); stroke-width: 1; fill: none; stroke-dasharray: 4 3; opacity: 0.5; }
-        .new-path { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-dasharray: 200; stroke-dashoffset: 200; }
-        .svg-animate.visible .new-path { animation: drawNew 2s ease 1s forwards; }
-        @keyframes drawNew { to { stroke-dashoffset: 0; } }
-        .transform-node { fill: var(--accent); opacity: 0; }
-        .svg-animate.visible .transform-node.t1 { animation: transformIn 0.6s ease 1.5s forwards; }
-        .svg-animate.visible .transform-node.t2 { animation: transformIn 0.6s ease 2s forwards; }
-        .svg-animate.visible .transform-node.t3 { animation: transformIn 0.6s ease 2.5s forwards; }
-        @keyframes transformIn { to { opacity: 0.8; } }
-        .reconnect-label { opacity: 0; }
-        .svg-animate.visible .reconnect-label { animation: fadeIn 0.8s ease 3s forwards; }
+        .env-old { opacity: 0; }
+        .svg-animate.visible .env-old { animation: fadeIn 0.8s ease 0.3s forwards; }
+        .env-arrow { opacity: 0; }
+        .svg-animate.visible .env-arrow { animation: fadeIn 0.6s ease 1s forwards; }
+        .env-new { opacity: 0; }
+        .svg-animate.visible .env-new { animation: fadeIn 0.8s ease 1.5s forwards; }
+        .env-bottom { opacity: 0; }
+        .svg-animate.visible .env-bottom { animation: fadeIn 0.6s ease 2.2s forwards; }
 
         .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--border); }
         .footer p { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
