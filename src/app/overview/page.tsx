@@ -167,7 +167,7 @@ export default function OverviewPage() {
 
       {/* ===== HEADER ===== */}
       <header className="relative z-20" style={{ borderBottom: "1px solid var(--slate)" }}>
-        <div className="max-w-[1300px] mx-auto px-8 py-5 flex items-center justify-between">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8 py-4 md:py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full" style={{ background: "var(--cyan)", boxShadow: "0 0 8px var(--cyan)" }} />
             <span className="font-code text-sm font-semibold tracking-[0.15em] uppercase" style={{ color: "var(--cyan)" }}>
@@ -187,8 +187,8 @@ export default function OverviewPage() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative z-20 py-28">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-14 md:py-28">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <div
             className="font-code text-xs tracking-[0.3em] uppercase mb-6"
             style={{ color: "var(--cyan)", opacity: mounted ? 1 : 0, animation: mounted ? "fadeIn 0.8s ease both" : "none" }}
@@ -211,7 +211,7 @@ export default function OverviewPage() {
             その仕組みと設計思想を、視覚的に解き明かします。
           </p>
           <div
-            className="flex items-center gap-6 mt-10 font-code text-xs"
+            className="flex flex-wrap items-center gap-6 mt-10 font-code text-xs"
             style={{ color: "var(--text-dim)", opacity: mounted ? 1 : 0, animation: mounted ? "fadeIn 1s 0.8s both" : "none" }}
           >
             <span className="flex items-center gap-2">
@@ -223,8 +223,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 1: WHAT IS IT ===== */}
-      <section className="relative z-20 py-24" style={{ background: "var(--navy-light)" }}>
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24" style={{ background: "var(--navy-light)" }}>
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="01" label="What is it" />
           <div id="s1" data-reveal className={`rv ${isR("s1") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6" style={{ color: "#f0f4f8" }}>
@@ -262,8 +262,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 2: BEFORE / AFTER ===== */}
-      <section className="relative z-20 py-24">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="02" label="Before / After" />
           <div id="s2" data-reveal className={`rv ${isR("s2") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-16" style={{ color: "#f0f4f8" }}>
@@ -271,10 +271,10 @@ export default function OverviewPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-8">
             {/* Before */}
             <div id="s2-before" data-reveal className={`rv d1 ${isR("s2-before") ? "on" : ""}`}>
-              <div className="card card-amber p-8 h-full">
+              <div className="card card-amber p-5 md:p-8 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="w-3 h-3 rounded-full" style={{ background: "var(--red)", boxShadow: "0 0 8px var(--red-dim)" }} />
                   <span className="font-code text-xs tracking-[0.2em] uppercase font-semibold" style={{ color: "var(--red)" }}>
@@ -299,7 +299,7 @@ export default function OverviewPage() {
 
             {/* After */}
             <div id="s2-after" data-reveal className={`rv d2 ${isR("s2-after") ? "on" : ""}`}>
-              <div className="card p-8 h-full">
+              <div className="card p-5 md:p-8 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="w-3 h-3 rounded-full" style={{ background: "var(--green)", boxShadow: "0 0 8px var(--green-dim)" }} />
                   <span className="font-code text-xs tracking-[0.2em] uppercase font-semibold" style={{ color: "var(--green)" }}>
@@ -339,8 +339,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 3: PROMPT ANATOMY ===== */}
-      <section className="relative z-20 py-24" style={{ background: "var(--navy-light)" }}>
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24" style={{ background: "var(--navy-light)" }}>
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="03" label="Prompt Anatomy" />
           <div id="s4" data-reveal className={`rv ${isR("s4") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6" style={{ color: "#f0f4f8" }}>
@@ -389,7 +389,7 @@ export default function OverviewPage() {
           </div>
 
           {/* Three parts detail */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-3 md:gap-6">
             {[
               {
                 part: "Part 1",
@@ -435,7 +435,7 @@ export default function OverviewPage() {
                 data-reveal
                 className={`rv d${i + 1} ${isR(`s4-p${i}`) ? "on" : ""}`}
               >
-                <div className="card p-8 h-full">
+                <div className="card p-5 md:p-8 h-full">
                   <span className="font-code text-[10px] tracking-[0.2em] uppercase block mb-1" style={{ color: part.color }}>
                     {part.part}
                   </span>
@@ -465,8 +465,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 5: WHY IT WORKS ===== */}
-      <section className="relative z-20 py-24" style={{ background: "var(--navy-light)" }}>
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24" style={{ background: "var(--navy-light)" }}>
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="04" label="Design Principles" />
           <div id="s5" data-reveal className={`rv ${isR("s5") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-16" style={{ color: "#f0f4f8" }}>
@@ -474,7 +474,7 @@ export default function OverviewPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {[
               {
                 num: "01",
@@ -531,8 +531,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 6: CONTEXT COST ===== */}
-      <section className="relative z-20 py-24">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="05" label="Context Cost" />
           <div id="s6" data-reveal className={`rv ${isR("s6") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6" style={{ color: "#f0f4f8" }}>
@@ -577,7 +577,7 @@ export default function OverviewPage() {
                   <div className="terminal-dot" style={{ background: "#22c55e" }} />
                   <span className="font-code text-[11px] ml-2" style={{ color: "var(--text-dim)" }}>context-comparison</span>
                 </div>
-                <div className="p-6">
+                <div className="p-4 md:p-6 overflow-x-auto">
                   <table className="w-full font-code text-sm">
                     <thead>
                       <tr style={{ color: "var(--text-dim)" }}>
@@ -610,8 +610,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 7: RANKING ===== */}
-      <section className="relative z-20 py-24" style={{ background: "var(--navy-light)" }}>
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24" style={{ background: "var(--navy-light)" }}>
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="06" label="Popularity" />
           <div id="s7" data-reveal className={`rv ${isR("s7") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-16" style={{ color: "#f0f4f8" }}>
@@ -635,7 +635,7 @@ export default function OverviewPage() {
               ].map((item) => (
                 <div key={item.name} className="flex items-center gap-4">
                   <span
-                    className="font-code text-xs w-36 shrink-0 text-right"
+                    className="font-code text-xs w-24 md:w-36 shrink-0 text-right"
                     style={{ color: item.highlight ? "var(--cyan)" : "var(--text-dim)", fontWeight: item.highlight ? 600 : 400 }}
                   >
                     {item.name}
@@ -669,8 +669,8 @@ export default function OverviewPage() {
       </section>
 
       {/* ===== SECTION 8: SUMMARY ===== */}
-      <section className="relative z-20 py-24">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative z-20 py-12 md:py-24">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8">
           <SectionLabel number="07" label="Summary" />
           <div id="s8" data-reveal className={`rv ${isR("s8") ? "on" : ""}`}>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-16" style={{ color: "#f0f4f8" }}>
@@ -678,7 +678,7 @@ export default function OverviewPage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {[
               { icon: "◇", title: "シンプルな仕組み", desc: "プロンプト1枚でデザイン出力を劇的に変える", color: "var(--cyan)" },
               { icon: "△", title: "大きな効果", desc: "「AIっぽさ」から脱却した個性的なUI生成", color: "var(--amber)" },
@@ -717,7 +717,7 @@ export default function OverviewPage() {
 
       {/* ===== FOOTER ===== */}
       <footer className="relative z-20 py-10" style={{ borderTop: "1px solid var(--slate)" }}>
-        <div className="max-w-[1300px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1300px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full" style={{ background: "var(--cyan)", animation: "pulse 2s ease infinite" }} />
             <span className="font-code text-xs tracking-wider" style={{ color: "var(--text-dim)" }}>

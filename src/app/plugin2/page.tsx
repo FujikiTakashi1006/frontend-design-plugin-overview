@@ -196,7 +196,7 @@ export default function Plugin2Page() {
         className="relative z-20"
         style={{ borderBottom: "1px solid rgba(26, 23, 20, 0.08)" }}
       >
-        <div className="max-w-[1200px] mx-auto px-8 py-6 flex items-center justify-between">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex flex-col items-center gap-0.5">
               <div className="w-6 h-px" style={{ background: "var(--gold)" }} />
@@ -237,7 +237,7 @@ export default function Plugin2Page() {
 
       {/* ===== HERO ===== */}
       <section className="relative z-20 min-h-[92vh] flex items-center">
-        <div className="max-w-[1200px] mx-auto px-8 py-32 w-full">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-16 md:py-32 w-full">
           <div className="grid md:grid-cols-12 gap-8 items-center">
             {/* Vertical text accent */}
             <div className="hidden md:flex md:col-span-1 justify-center">
@@ -351,8 +351,8 @@ export default function Plugin2Page() {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section id="services" className="relative z-20 py-32" style={{ background: "var(--cream-dark)" }}>
-        <div className="max-w-[1200px] mx-auto px-8">
+      <section id="services" className="relative z-20 py-16 md:py-32" style={{ background: "var(--cream-dark)" }}>
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8">
           <div className="flex items-start gap-12 mb-20">
             <div
               id="svc-head"
@@ -371,7 +371,7 @@ export default function Plugin2Page() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-8">
             {[
               {
                 num: "壱",
@@ -396,7 +396,7 @@ export default function Plugin2Page() {
                 key={service.num}
                 id={`svc-${i}`}
                 data-reveal
-                className={`service-card-lux reveal-up d${i + 1} ${isRevealed(`svc-${i}`) ? "active" : ""} p-10`}
+                className={`service-card-lux reveal-up d${i + 1} ${isRevealed(`svc-${i}`) ? "active" : ""} p-6 md:p-10`}
                 style={{ background: "var(--cream)", border: "1px solid rgba(26, 23, 20, 0.06)" }}
               >
                 <span
@@ -430,9 +430,9 @@ export default function Plugin2Page() {
       </section>
 
       {/* ===== PHILOSOPHY / ABOUT ===== */}
-      <section id="philosophy" className="relative z-20 py-32">
-        <div className="max-w-[1200px] mx-auto px-8">
-          <div className="grid md:grid-cols-12 gap-16 items-start">
+      <section id="philosophy" className="relative z-20 py-16 md:py-32">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
             <div className="md:col-span-5">
               <div
                 id="phil-head"
@@ -473,7 +473,7 @@ export default function Plugin2Page() {
             </div>
 
             <div className="md:col-span-7">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-3 md:gap-6">
                 {[
                   { value: "2018", label: "創業", sub: "Year Founded" },
                   { value: "120", label: "匠", sub: "Engineers", suffix: "名" },
@@ -484,7 +484,7 @@ export default function Plugin2Page() {
                     key={stat.label}
                     id={`stat2-${i}`}
                     data-reveal
-                    className={`reveal-up d${i + 1} ${isRevealed(`stat2-${i}`) ? "active" : ""} p-8 text-center`}
+                    className={`reveal-up d${i + 1} ${isRevealed(`stat2-${i}`) ? "active" : ""} p-4 md:p-8 text-center`}
                     style={{ border: "1px solid rgba(26, 23, 20, 0.06)" }}
                   >
                     <div
@@ -519,7 +519,7 @@ export default function Plugin2Page() {
       </section>
 
       {/* Gold divider */}
-      <div className="relative z-20 max-w-[1200px] mx-auto px-8">
+      <div className="relative z-20 max-w-[1200px] mx-auto px-4 md:px-8">
         <div
           className="h-px"
           style={{ background: "linear-gradient(90deg, transparent, var(--gold-light) 30%, var(--gold-light) 70%, transparent)" }}
@@ -527,8 +527,8 @@ export default function Plugin2Page() {
       </div>
 
       {/* ===== TEAM ===== */}
-      <section id="team" className="relative z-20 py-32">
-        <div className="max-w-[1200px] mx-auto px-8">
+      <section id="team" className="relative z-20 py-16 md:py-32">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8">
           <div
             id="team2-head"
             data-reveal
@@ -545,7 +545,7 @@ export default function Plugin2Page() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
             {[
               { name: "田中 太郎", role: "CEO / Founder", kanji: "創" },
               { name: "佐藤 花子", role: "CTO", kanji: "智" },
@@ -593,11 +593,11 @@ export default function Plugin2Page() {
       {/* ===== CONTACT ===== */}
       <section
         id="contact"
-        className="relative z-20 py-32"
+        className="relative z-20 py-16 md:py-32"
         style={{ background: "var(--cream-dark)" }}
       >
-        <div className="max-w-[1200px] mx-auto px-8">
-          <div className="grid md:grid-cols-12 gap-16">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-4">
               <div
                 id="ct-head"
@@ -627,9 +627,9 @@ export default function Plugin2Page() {
               <form
                 id="ct-form"
                 data-reveal
-                className={`reveal-up d2 ${isRevealed("ct-form") ? "active" : ""} space-y-10`}
+                className={`reveal-up d2 ${isRevealed("ct-form") ? "active" : ""} space-y-6 md:space-y-10`}
               >
-                <div className="grid md:grid-cols-2 gap-10">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-10">
                   <div>
                     <label
                       className="font-mono text-[10px] tracking-[0.2em] uppercase block mb-2"
@@ -690,7 +690,7 @@ export default function Plugin2Page() {
         className="relative z-20 py-10"
         style={{ borderTop: "1px solid rgba(26, 23, 20, 0.06)" }}
       >
-        <div className="max-w-[1200px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex flex-col items-center gap-0.5">
               <div className="w-4 h-px" style={{ background: "var(--gold)" }} />

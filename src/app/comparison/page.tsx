@@ -5,12 +5,18 @@ export default function ComparisonPage() {
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black min-h-screen">
       <Link
         href="/"
-        className="absolute top-6 left-6 text-sm text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-lg px-4 py-2 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-colors"
+        className="absolute top-4 left-4 md:top-6 md:left-6 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-lg px-3 py-1.5 md:px-4 md:py-2 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-colors"
       >
         &larr; Home
       </Link>
-      <main className="flex flex-col items-center gap-12 py-24 px-8 w-full max-w-5xl">
-        <h1 className="text-4xl font-bold text-black dark:text-white text-center">
+      <Link
+        href="/overview"
+        className="absolute top-4 right-4 md:top-6 md:right-6 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-lg px-3 py-1.5 md:px-4 md:py-2 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-colors"
+      >
+        プラグイン解説 &rarr;
+      </Link>
+      <main className="flex flex-col items-center gap-8 md:gap-12 py-16 md:py-24 px-4 md:px-8 w-full max-w-5xl">
+        <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white text-center">
           Frontend Design Plugin テスト
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400 text-center">
@@ -34,22 +40,22 @@ export default function ComparisonPage() {
           </div>
         </div>
 
-        <div className="flex gap-6 flex-wrap justify-center">
+        <div className="flex gap-3 md:gap-6 flex-wrap justify-center w-full">
           <Link
             href="/default"
-            className="flex h-14 items-center justify-center rounded-xl bg-zinc-900 px-8 text-white font-medium hover:bg-zinc-700 transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+            className="flex h-12 md:h-14 items-center justify-center rounded-xl bg-zinc-900 px-6 md:px-8 text-sm md:text-base text-white font-medium hover:bg-zinc-700 transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-200 w-full md:w-auto"
           >
             プラグインなし
           </Link>
           <Link
             href="/plugin"
-            className="flex h-14 items-center justify-center rounded-xl border-2 border-zinc-900 px-8 text-zinc-900 font-medium hover:bg-zinc-900 hover:text-white transition-colors dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+            className="flex h-12 md:h-14 items-center justify-center rounded-xl border-2 border-zinc-900 px-6 md:px-8 text-sm md:text-base text-zinc-900 font-medium hover:bg-zinc-900 hover:text-white transition-colors dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black w-full md:w-auto"
           >
             プラグインあり
           </Link>
           <Link
             href="/plugin2"
-            className="flex h-14 items-center justify-center rounded-xl border-2 border-zinc-900 px-8 text-zinc-900 font-medium hover:bg-zinc-900 hover:text-white transition-colors dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+            className="flex h-12 md:h-14 items-center justify-center rounded-xl border-2 border-zinc-900 px-6 md:px-8 text-sm md:text-base text-zinc-900 font-medium hover:bg-zinc-900 hover:text-white transition-colors dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black w-full md:w-auto"
           >
             プラグインあり 2回目
           </Link>

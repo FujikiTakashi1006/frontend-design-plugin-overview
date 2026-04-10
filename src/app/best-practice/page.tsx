@@ -376,6 +376,16 @@ export default function BestPracticePage() {
         .bp-footer { text-align: center; padding: 3rem 2rem; font-family: 'Source Code Pro', monospace; font-size: 0.6rem; color: var(--ink3); }
         .bp-footer a { color: var(--cyan); text-decoration: none; }
         .bp-footer a:hover { text-decoration: underline; }
+
+        /* Mobile responsive */
+        @media (max-width: 640px) {
+          .bp-sec { padding: 3rem 1.25rem; }
+          .bp-back { left: 1rem; top: 1rem; }
+          .bp-stats { gap: 1.5rem; }
+          .bp-stat-val { font-size: 1.8rem; }
+          .bp-callout { padding: 1rem; }
+          .bp-tip { padding: 0.8rem 1rem; }
+        }
       `}</style>
 
       <div className="bp" suppressHydrationWarning>

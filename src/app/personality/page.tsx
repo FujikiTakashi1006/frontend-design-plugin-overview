@@ -418,74 +418,41 @@ export default function PersonalityPage() {
           color: var(--body);
         }
 
-        /* ─── Hero ─── */
-        .hero {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+        /* ─── Page Header ─── */
+        .page-header {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 100px 40px 60px;
           text-align: center;
-          padding: 60px 24px;
-          position: relative;
-          overflow: hidden;
         }
-        .hero::before {
-          content: '';
-          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-        }
-        .hero-label {
+        .page-label {
           font-family: 'Cormorant Garamond', serif;
           font-size: 12px;
           letter-spacing: 4px;
           text-transform: uppercase;
           color: var(--accent);
+          margin-bottom: 24px;
         }
-        .hero-title {
+        .page-title {
           font-family: 'Playfair Display', serif;
-          font-size: clamp(28px, 5vw, 52px);
+          font-size: clamp(26px, 4.5vw, 46px);
           font-weight: 400;
-          line-height: 1.4;
+          line-height: 1.5;
           color: var(--ink);
+          margin-bottom: 24px;
         }
-        .hero-title em {
+        .page-title em {
           font-style: italic;
           color: var(--accent);
         }
-        .hero-subtitle {
+        .page-lead {
           font-family: 'Noto Sans JP', sans-serif;
-          font-size: clamp(14px, 2vw, 18px);
+          font-size: clamp(14px, 1.8vw, 16px);
           font-weight: 300;
           color: var(--sub);
-          max-width: 540px;
-          line-height: 1.8;
-        }
-        .divider {
-          width: 60px;
-          height: 1px;
-          background: var(--accent-light);
+          line-height: 2;
+          max-width: 640px;
           margin: 0 auto;
-        }
-        .hero-svg-container {
-          max-width: 400px;
-          margin: 0 auto 48px;
-        }
-        .scroll-indicator {
-          position: absolute;
-          bottom: 32px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-        }
-        .scroll-line {
-          width: 1px;
-          height: 40px;
-          background: linear-gradient(to bottom, var(--accent), transparent);
-          animation: scrollPulse 2s ease-in-out infinite;
         }
 
         /* ─── Animations ─── */
@@ -774,58 +741,20 @@ export default function PersonalityPage() {
             margin: 0 auto;
           }
           .section { padding: 48px 20px; }
-          .hero { padding: 40px 16px; }
+          .page-header { padding: 60px 20px 40px; }
         }
       `}</style>
 
-      <section className="hero">
-        <p className="hero-label" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.3s forwards' }}>
-          Evolutionary Psychology
-        </p>
-        <h1 className="hero-title" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.5s forwards' }}>
-          あなたの性格は、あなたが<br /><em>「選んだもの」</em>じゃない。
+      <header className="page-header">
+        <p className="page-label" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.2s forwards' }}>Evolutionary Psychology</p>
+        <h1 className="page-title" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.4s forwards' }}>
+          「環境を変える」は逃げじゃない。<br />最も合理的な<em>自己変革</em>だ。
         </h1>
-        <p className="hero-subtitle" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.7s forwards' }}>
-          進化心理学と神経科学が明かす、<br />「自分」をつくる本当のメカニズム
+        <p className="page-lead" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.6s forwards' }}>
+          進化心理学と神経科学が示す事実——あなたの性格・自信・行動は、周囲の人間によってつくられている。<br />
+          なぜそう言えるのか。7つの科学的根拠で解説する。
         </p>
-        <div className="divider" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 1.1s forwards' }} />
-        <div className="hero-svg-container" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 0.9s forwards' }}>
-          <svg viewBox="0 0 400 250" role="img" aria-label="社会的ネットワーク図：中心の人物から周囲の人々へ接続が広がる">
-            {/* Connection lines */}
-            {[
-              [200,125,120,60], [200,125,280,60], [200,125,100,150],
-              [200,125,300,150], [200,125,140,200], [200,125,260,200],
-              [120,60,280,60], [100,150,140,200], [300,150,260,200], [120,60,100,150]
-            ].map(([x1,y1,x2,y2], i) => (
-              <line key={i} className="connection" x1={x1} y1={y1} x2={x2} y2={y2}
-                style={{ animationDelay: `${1.2 + i * 0.2}s` }} />
-            ))}
-            {/* Pulse rings */}
-            {[0, 1, 2].map(i => (
-              <circle key={i} className="pulse" cx={200} cy={125} r={4}
-                style={{ animationDelay: `${i}s` }} />
-            ))}
-            {/* Center node */}
-            <circle cx={200} cy={125} r={8} fill="var(--accent)" opacity={0.9} />
-            {/* Surrounding nodes */}
-            {[[120,60],[280,60],[100,150],[300,150],[140,200],[260,200]].map(([cx,cy], i) => (
-              <circle key={i} className="node-appear" cx={cx} cy={cy} r={5}
-                fill="var(--accent)" style={{ animationDelay: `${1.0 + i * 0.1}s` }} />
-            ))}
-            {/* Outer nodes (friends of friends) */}
-            {[[60,30],[340,30],[50,190]].map(([cx,cy], i) => (
-              <circle key={i} className="node-appear" cx={cx} cy={cy} r={3}
-                fill="var(--accent)" opacity={0.3} style={{ animationDelay: `${1.6 + i * 0.1}s` }} />
-            ))}
-          </svg>
-        </div>
-        <div className="scroll-indicator" style={{ opacity: 0, animation: 'fadeUp 0.8s ease 1.5s forwards' }}>
-          <span style={{ fontSize: 11, letterSpacing: 2, color: 'var(--muted)', textTransform: 'uppercase' as const, fontFamily: "'Cormorant Garamond', serif" }}>
-            Scroll
-          </span>
-          <div className="scroll-line" />
-        </div>
-      </section>
+      </header>
 
       <Section01 />
       <Section02 />

@@ -83,6 +83,7 @@ export default function S3ComparisonPage() {
           opacity: 0; transform: translateY(20px);
           transition: all 0.9s cubic-bezier(0.22,1,0.36,1);
         }
+        @media (max-width: 640px) { .gal-head { padding: 3rem 1.25rem 0; } }
         .gal-head.on { opacity: 1; transform: none; }
 
         .gal-eyebrow {
@@ -276,6 +277,7 @@ export default function S3ComparisonPage() {
           opacity: 0;
           transition: opacity 0.5s 0.5s;
         }
+        @media (max-width: 640px) { .gal-foot { padding: 2rem 1.25rem 3rem; } }
         .gal-foot.on { opacity: 1; }
         .gal-foot a {
           color: var(--ink2);

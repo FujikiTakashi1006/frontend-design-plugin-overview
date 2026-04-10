@@ -150,7 +150,7 @@ function ActiveBrackets({ children }: { children: React.ReactNode }) {
 export function Header() {
   return (
     <header
-      className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-8 py-5"
+      className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-4 md:px-8 py-4 md:py-5"
       style={{ background: "transparent" }}
     >
       {/* Logo Section */}

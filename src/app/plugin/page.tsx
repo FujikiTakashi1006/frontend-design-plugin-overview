@@ -180,7 +180,7 @@ export default function PluginPage() {
 
       {/* ===== HEADER ===== */}
       <header className="relative z-20 border-b" style={{ borderColor: "rgba(200, 255, 0, 0.15)" }}>
-        <div className="max-w-[1400px] mx-auto px-8 py-5 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-4 md:py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div
               className="w-3 h-3 rounded-full"
@@ -221,7 +221,7 @@ export default function PluginPage() {
 
       {/* ===== HERO ===== */}
       <section className="relative z-20 min-h-[90vh] flex items-center">
-        <div className="max-w-[1400px] mx-auto px-8 py-32 w-full">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-16 md:py-32 w-full">
           <div className="grid md:grid-cols-12 gap-8 items-end">
             <div className="md:col-span-8">
               <div
@@ -345,8 +345,8 @@ export default function PluginPage() {
       </div>
 
       {/* ===== SERVICES ===== */}
-      <section id="services" className="relative z-20 py-32">
-        <div className="max-w-[1400px] mx-auto px-8">
+      <section id="services" className="relative z-20 py-16 md:py-32">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
           <div
             id="services-header"
             data-reveal
@@ -439,9 +439,9 @@ export default function PluginPage() {
             clipPath: "polygon(0 60%, 100% 0, 100% 40%, 0 100%)",
           }}
         />
-        <div className="py-32" style={{ background: "rgba(200,255,0,0.02)" }}>
-          <div className="max-w-[1400px] mx-auto px-8">
-            <div className="grid md:grid-cols-12 gap-16">
+        <div className="py-16 md:py-32" style={{ background: "rgba(200,255,0,0.02)" }}>
+          <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16">
               <div className="md:col-span-5">
                 <div
                   id="about-header"
@@ -495,7 +495,7 @@ export default function PluginPage() {
                       key={stat.label}
                       id={`stat-${i}`}
                       data-reveal
-                      className={`stat-block reveal reveal-delay-${i + 1} ${isRevealed(`stat-${i}`) ? "active" : ""} p-8 border`}
+                      className={`stat-block reveal reveal-delay-${i + 1} ${isRevealed(`stat-${i}`) ? "active" : ""} p-5 md:p-8 border`}
                       style={{ borderColor: "rgba(200,255,0,0.1)" }}
                     >
                       <div
@@ -521,8 +521,8 @@ export default function PluginPage() {
       </section>
 
       {/* ===== TEAM ===== */}
-      <section id="team" className="relative z-20 py-32">
-        <div className="max-w-[1400px] mx-auto px-8">
+      <section id="team" className="relative z-20 py-16 md:py-32">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
           <div
             id="team-header"
             data-reveal
@@ -544,7 +544,7 @@ export default function PluginPage() {
               異能が集まる場所。
             </p>
           </div>
-          <div className="mt-20 grid md:grid-cols-4 gap-6">
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { name: "田中 太郎", role: "CEO / Founder", tag: "Vision" },
               { name: "佐藤 花子", role: "CTO", tag: "Architecture" },
@@ -592,11 +592,11 @@ export default function PluginPage() {
       {/* ===== CONTACT ===== */}
       <section
         id="contact"
-        className="relative z-20 py-32"
+        className="relative z-20 py-16 md:py-32"
         style={{ borderTop: "1px solid rgba(200,255,0,0.1)" }}
       >
-        <div className="max-w-[1400px] mx-auto px-8">
-          <div className="grid md:grid-cols-12 gap-16">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-5">
               <div
                 id="contact-header"
@@ -701,7 +701,7 @@ export default function PluginPage() {
         className="relative z-20 py-12"
         style={{ borderTop: "1px solid rgba(200,255,0,0.1)" }}
       >
-        <div className="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div
               className="w-2 h-2 rounded-full"

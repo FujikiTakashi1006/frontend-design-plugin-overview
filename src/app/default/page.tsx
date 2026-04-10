@@ -5,7 +5,7 @@ export default function DefaultPage() {
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Header */}
       <header className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <div className="text-xl font-bold text-zinc-900 dark:text-white">
             NexTech Solutions
           </div>
@@ -22,8 +22,8 @@ export default function DefaultPage() {
       </header>
 
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
+      <section className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-24">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           テクノロジーで、<br />ビジネスを次のステージへ。
         </h1>
         <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl">
@@ -46,8 +46,8 @@ export default function DefaultPage() {
       </section>
 
       {/* Services */}
-      <section id="services" className="bg-zinc-50 dark:bg-zinc-900 py-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="services" className="bg-zinc-50 dark:bg-zinc-900 py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">サービス</h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">お客様のニーズに合わせたソリューションを提供します</p>
           <div className="mt-12 grid md:grid-cols-3 gap-8">
@@ -86,8 +86,8 @@ export default function DefaultPage() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="about" className="py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">会社概要</h2>
           <div className="mt-8 grid md:grid-cols-2 gap-12">
             <div>
@@ -119,11 +119,11 @@ export default function DefaultPage() {
       </section>
 
       {/* Team */}
-      <section id="team" className="bg-zinc-50 dark:bg-zinc-900 py-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="team" className="bg-zinc-50 dark:bg-zinc-900 py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">チーム</h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">経験豊富なエンジニアが在籍しています</p>
-          <div className="mt-12 grid md:grid-cols-4 gap-6">
+          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { name: "田中 太郎", role: "CEO / Founder" },
               { name: "佐藤 花子", role: "CTO" },
@@ -141,8 +141,8 @@ export default function DefaultPage() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="contact" className="py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">お問い合わせ</h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">お気軽にご連絡ください</p>
           <form className="mt-8 max-w-lg space-y-4">
@@ -179,7 +179,7 @@ export default function DefaultPage() {
 
       {/* Footer */}
       <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center text-sm text-zinc-500">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center text-sm text-zinc-500">
           © 2025 NexTech Solutions. All rights reserved.
         </div>
       </footer>

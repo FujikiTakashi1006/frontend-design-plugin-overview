@@ -94,7 +94,7 @@ function Header() {
         </div>
 
         {/* Desktop Nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "2rem", fontSize: "0.82rem", fontWeight: 500, color: scrolled ? "#2b394c" : "#fff" }}>
+        <nav className="s3-desktop-nav" style={{ display: "flex", alignItems: "center", gap: "2rem", fontSize: "0.82rem", fontWeight: 500, color: scrolled ? "#2b394c" : "#fff" }}>
           <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Home</a>
           <a href="#" style={{ color: "inherit", textDecoration: "none" }}>Who we are</a>
           <div style={{ position: "relative" }}
@@ -192,7 +192,7 @@ export default function S3ClonePage() {
   ];
 
   return (
-    <div style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", color: "#2b394c", background: "#fff", overflowX: "hidden" }}>
+    <div className="s3-clone" style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", color: "#2b394c", background: "#fff", overflowX: "hidden" }}>
       <Header />
 
       {/* ═══ HERO ═══ */}
@@ -215,7 +215,7 @@ export default function S3ClonePage() {
             </h1>
           </Fade>
           <Fade delay={200}>
-            <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginTop: "2.5rem", fontSize: "0.9rem", fontWeight: 400, opacity: 0.85 }}>
+            <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginTop: "2.5rem", fontSize: "0.9rem", fontWeight: 400, opacity: 0.85, flexWrap: "wrap" }}>
               <span>Smart technology</span>
               <span style={{ width: 1, background: "rgba(255,255,255,0.3)" }} />
               <span>High-skilled people</span>
@@ -249,6 +249,11 @@ export default function S3ClonePage() {
 
       <style>{`
         @keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+        @media (max-width: 768px) {
+          .s3-desktop-nav { display: none !important; }
+          .s3-clone section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; padding-top: 3rem !important; padding-bottom: 3rem !important; }
+          .s3-clone header > div { padding-left: 1rem !important; padding-right: 1rem !important; }
+        }
       `}</style>
 
       {/* ═══ INTRO ═══ */}
@@ -279,7 +284,7 @@ export default function S3ClonePage() {
               Our <span style={{ color: "#13d8cb" }}>expertises</span>
             </h2>
           </Fade>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
             {expertises.map((e, i) => (
               <Fade key={e.num} delay={i * 80}>
                 <a href="#" style={{
@@ -371,7 +376,7 @@ export default function S3ClonePage() {
               Key <span style={{ color: "#13d8cb" }}>numbers</span>
             </h2>
           </Fade>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem", textAlign: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "2rem", textAlign: "center" }}>
             {stats.map((s, i) => (
               <Fade key={i} delay={i * 100}>
                 <div>
@@ -486,7 +491,7 @@ export default function S3ClonePage() {
       {/* ═══ FOOTER ═══ */}
       <footer style={{ padding: "4rem 2rem 2rem", background: "#1a2634", color: "rgba(255,255,255,0.7)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "2.5rem", marginBottom: "3rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2.5rem", marginBottom: "3rem" }}>
             {/* Brand */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
