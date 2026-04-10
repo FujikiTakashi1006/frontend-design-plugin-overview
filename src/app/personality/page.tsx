@@ -73,8 +73,6 @@ function Section02() {
               <svg viewBox="0 0 240 160" role="img" aria-label="社会脳仮説：脳のエネルギーの大半は人間関係の処理に使われている">
                 {/* Brain shape (more realistic silhouette) */}
                 <path className="brain-outline" d="M120,25 C135,25 155,30 160,50 C165,65 158,78 150,82 C155,90 155,105 145,115 C135,125 115,130 100,128 C85,130 70,125 60,115 C50,105 50,90 55,82 C47,78 40,65 45,50 C50,30 70,25 85,25 C90,22 95,20 100,20 C105,20 115,22 120,25Z" fill="var(--accent)" opacity={0.08} stroke="var(--accent-light)" strokeWidth={1.2} />
-                {/* Center divider (brain hemispheres) */}
-                <path d="M100,25 C102,50 98,80 100,125" fill="none" stroke="var(--accent-light)" strokeWidth={0.6} opacity={0.4} />
                 {/* Pie chart inside brain showing 80% social */}
                 <circle className="brain-pie-bg" cx={100} cy={75} r={25} fill="none" stroke="var(--border)" strokeWidth={8} />
                 <circle className="brain-pie" cx={100} cy={75} r={25} fill="none" stroke="var(--accent)" strokeWidth={8} strokeDasharray="126" strokeDashoffset="25" strokeLinecap="round" />
