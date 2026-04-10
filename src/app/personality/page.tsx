@@ -531,9 +531,9 @@ export default function PersonalityPage() {
 
         /* ─── Sections (図解本スタイル) ─── */
         .section {
-          max-width: 720px;
+          max-width: 1060px;
           margin: 0 auto;
-          padding: 80px 24px;
+          padding: 80px 40px;
           border-top: 1px solid var(--border);
         }
         .section-header {
@@ -553,15 +553,18 @@ export default function PersonalityPage() {
           line-height: 1.5;
           margin-bottom: 0;
         }
-        /* 図解の下にテキスト */
+        /* 横並びレイアウト：図解 + テキスト */
         .section-layout {
-          display: flex;
-          flex-direction: column;
-          gap: 40px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 48px;
+          align-items: start;
         }
         .section-visual {
-          max-width: 480px;
-          margin: 0 auto;
+          position: sticky;
+          top: 80px;
+        }
+        .section-text {
         }
         .section-body {
           font-family: 'Noto Sans JP', sans-serif;
@@ -748,9 +751,18 @@ export default function PersonalityPage() {
         .footer p { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
 
         /* ─── Responsive ─── */
-        @media (max-width: 640px) {
-          .section { padding: 48px 16px; }
-          .page-header { padding: 60px 16px 40px; }
+        @media (max-width: 860px) {
+          .section-layout {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+          .section-visual {
+            position: static;
+            max-width: 400px;
+            margin: 0 auto;
+          }
+          .section { padding: 48px 20px; }
+          .page-header { padding: 60px 20px 40px; }
         }
       `}</style>
 
