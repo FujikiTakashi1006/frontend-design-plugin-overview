@@ -113,7 +113,7 @@ function Section03() {
         <R ok={ok} d={0}><p className="section-number">03</p></R>
         <R ok={ok} d={80}><h2 className="section-heading">あなたの「キャラ」は、場面ごとに自動で切り替わっている</h2></R>
       </div>
-      <div className="section-layout reverse">
+      <div className="section-layout">
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
@@ -230,7 +230,7 @@ function Section05() {
         <R ok={ok} d={0}><p className="section-number">05</p></R>
         <R ok={ok} d={80}><h2 className="section-heading">肥満も、幸福も、年収も「うつる」</h2></R>
       </div>
-      <div className="section-layout reverse">
+      <div className="section-layout">
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
@@ -342,7 +342,7 @@ function Section07() {
         <R ok={ok} d={0}><p className="section-number">07</p></R>
         <R ok={ok} d={80}><h2 className="section-heading">「環境を変える」は逃げじゃない。最も合理的な自己変革だ。</h2></R>
       </div>
-      <div className="section-layout reverse">
+      <div className="section-layout">
         <R ok={ok} d={160}>
           <div className="section-visual">
             <div className={`svg-container svg-animate ${ok ? 'visible' : ''}`}>
@@ -495,12 +495,6 @@ export default function PersonalityPage() {
           grid-template-columns: 1fr 1fr;
           gap: 48px;
           align-items: start;
-        }
-        .section-layout.reverse {
-          direction: rtl;
-        }
-        .section-layout.reverse > * {
-          direction: ltr;
         }
         .section-visual {
           position: sticky;
@@ -731,9 +725,6 @@ export default function PersonalityPage() {
           .section-layout {
             grid-template-columns: 1fr;
             gap: 32px;
-          }
-          .section-layout.reverse {
-            direction: ltr;
           }
           .section-visual {
             position: static;
