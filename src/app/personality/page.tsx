@@ -203,8 +203,7 @@ function Section04() {
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={215} y={18} textAnchor="middle">あなた</text>
                 </g>
                 {/* Error indicator next to B */}
-                <circle className="error-signal" cx={240} cy={47} r={10} />
-                <text className="error-text" fontFamily="'Cormorant Garamond',serif" fontSize={14} fontWeight={700} x={240} y={52} textAnchor="middle">!</text>
+                <text className="error-text" fontFamily="'Cormorant Garamond',serif" fontSize={16} fontWeight={700} fill="var(--error)" x={240} y={52} textAnchor="middle">!</text>
               </svg>
             </div>
           </div>
