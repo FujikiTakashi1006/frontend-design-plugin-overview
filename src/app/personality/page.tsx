@@ -342,14 +342,14 @@ function Section06() {
               <svg viewBox="0 0 260 150" role="img" aria-label="ソシオメーター：否定的な環境では自信が下がり、肯定的な環境では上がる">
                 {/* Left scene: rejection */}
                 <g className="socio-left">
-                  <rect x={10} y={15} width={110} height={95} rx={8} fill="none" stroke="var(--error)" strokeWidth={0.8} opacity={0.3} />
-                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--error)" x={65} y={12} textAnchor="middle" opacity={0.7}>否定的な環境</text>
+                  <rect x={10} y={15} width={110} height={95} rx={8} fill="var(--error)" opacity={0.05} stroke="var(--error)" strokeWidth={1} />
+                  <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--error)" x={65} y={12} textAnchor="middle">否定的な環境</text>
                   {/* Rejecting circles */}
                   {[30, 65, 100].map((x, i) => (
-                    <circle key={i} cx={x} cy={45} r={10} fill="var(--error)" opacity={0.08} stroke="var(--error)" strokeWidth={0.8} />
+                    <circle key={i} cx={x} cy={45} r={10} fill="var(--error)" opacity={0.12} stroke="var(--error)" strokeWidth={1} />
                   ))}
                   {/* Small "you" */}
-                  <circle cx={65} cy={80} r={8} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1} opacity={0.4} />
+                  <circle cx={65} cy={80} r={8} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1.2} />
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={65} y={83} textAnchor="middle">自分</text>
                   {/* Down arrow */}
                   <line x1={65} y1={92} x2={65} y2={106} stroke="var(--error)" strokeWidth={1.5} opacity={0.6} />
@@ -417,12 +417,12 @@ function Section07() {
               <svg viewBox="0 0 260 140" role="img" aria-label="環境を変える＝自分を変える：周囲の入力が変われば出力（行動・自信）も変わる">
                 {/* Left: old environment */}
                 <g className="env-old">
-                  <rect x={10} y={15} width={95} height={90} rx={8} fill="var(--border)" opacity={0.1} stroke="var(--border)" strokeWidth={1} />
+                  <rect x={10} y={15} width={95} height={90} rx={8} fill="var(--border)" opacity={0.15} stroke="var(--border)" strokeWidth={1} />
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={57} y={12} textAnchor="middle">現在の環境</text>
                   {[30, 57, 84].map((x, i) => (
-                    <circle key={i} cx={x} cy={45} r={9} fill="var(--border)" opacity={0.15} stroke="var(--border)" strokeWidth={0.8} />
+                    <circle key={i} cx={x} cy={45} r={9} fill="var(--border)" opacity={0.25} stroke="var(--border)" strokeWidth={1} />
                   ))}
-                  <circle cx={57} cy={78} r={10} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1} opacity={0.4} />
+                  <circle cx={57} cy={78} r={10} fill="var(--surface)" stroke="var(--ink)" strokeWidth={1.2} />
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={57} y={81} textAnchor="middle">自分</text>
                 </g>
                 {/* Arrow */}
