@@ -74,13 +74,13 @@ function Section02() {
                 {/* Pie chart inside brain showing 80% social */}
                 <circle className="brain-pie-bg" cx={100} cy={75} r={25} fill="none" stroke="var(--border)" strokeWidth={8} />
                 <circle className="brain-pie" cx={100} cy={75} r={25} fill="none" stroke="var(--accent)" strokeWidth={8} strokeDasharray="126" strokeDashoffset="25" strokeLinecap="round" />
-                <text className="brain-pct" fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--accent)" x={100} y={80} textAnchor="middle">80%</text>
+                <text className="brain-pct" fontFamily="'Outfit',sans-serif" fontSize={14} fill="var(--accent)" x={100} y={80} textAnchor="middle">80%</text>
                 {/* Labels */}
                 <text className="brain-label-social" fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--accent)" x={100} y={115} textAnchor="middle">人間関係の処理</text>
                 <text className="brain-label-other" fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={170} y={50} textAnchor="start">道具・狩り</text>
                 <line x1={160} y1={50} x2={128} y2={60} stroke="var(--muted)" strokeWidth={0.5} />
                 {/* Dunbar number */}
-                <text className="num-150" fontFamily="'Cormorant Garamond',serif" fontSize={18} fill="var(--accent)" x={100} y={150} textAnchor="middle">≈ 150人</text>
+                <text className="num-150" fontFamily="'Outfit',sans-serif" fontSize={18} fill="var(--accent)" x={100} y={150} textAnchor="middle">≈ 150人</text>
                 <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={100} y={160} textAnchor="middle">安定的に関係を維持できる人数</text>
               </svg>
             </div>
@@ -183,17 +183,17 @@ function Section04() {
                 {[30, 60, 90, 120, 145].map((x, i) => (
                   <g key={i} className="conform-person" style={{ animationDelay: `${0.3 + i * 0.12}s` }}>
                     <circle cx={x} cy={47} r={10} fill="var(--surface)" stroke="var(--accent)" strokeWidth={1.2} />
-                    <text fontFamily="'Cormorant Garamond',serif" fontSize={12} fill="var(--accent)" x={x} y={51} textAnchor="middle">A</text>
+                    <text fontFamily="'Outfit',sans-serif" fontSize={12} fill="var(--accent)" x={x} y={51} textAnchor="middle">A</text>
                   </g>
                 ))}
                 {/* Outlier */}
                 <g className="outlier-person">
                   <circle cx={215} cy={47} r={14} fill="var(--surface)" stroke="var(--error)" strokeWidth={1.5} />
-                  <text fontFamily="'Cormorant Garamond',serif" fontSize={14} fill="var(--error)" x={215} y={52} textAnchor="middle">B</text>
+                  <text fontFamily="'Outfit',sans-serif" fontSize={14} fill="var(--error)" x={215} y={52} textAnchor="middle">B</text>
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={7} fill="var(--muted)" x={215} y={18} textAnchor="middle">あなた</text>
                 </g>
                 {/* Error indicator next to B */}
-                <text className="error-text" fontFamily="'Cormorant Garamond',serif" fontSize={16} fontWeight={700} fill="var(--error)" x={240} y={52} textAnchor="middle">!</text>
+                <text className="error-text" fontFamily="'Outfit',sans-serif" fontSize={16} fontWeight={700} fill="var(--error)" x={240} y={52} textAnchor="middle">!</text>
               </svg>
             </div>
           </div>
@@ -260,7 +260,7 @@ function Section05() {
                   <text fontFamily="'Noto Sans JP',sans-serif" fontSize={6} fill="var(--muted)" x={240} y={58} textAnchor="middle" opacity={0.5}>...</text>
                 </g>
                 {/* Stats */}
-                <text className="contagion-stat" fontFamily="'Cormorant Garamond',serif" fontSize={22} fill="var(--accent)" x={130} y={120} textAnchor="middle">+57%</text>
+                <text className="contagion-stat" fontFamily="'Outfit',sans-serif" fontSize={22} fill="var(--accent)" x={130} y={120} textAnchor="middle">+57%</text>
                 <text className="contagion-stat-sub" fontFamily="'Noto Sans JP',sans-serif" fontSize={8} fill="var(--muted)" x={130} y={138} textAnchor="middle">友人が肥満 → 自分の肥満リスク上昇</text>
                 <defs>
                   <marker id="arrowhead" markerWidth={6} markerHeight={4} refX={5} refY={2} orient="auto">
@@ -427,14 +427,14 @@ export default function PersonalityPage() {
   return (
     <main>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
         :root {
           --bg: #09090b;
           --surface: #18181b;
           --border: #27272a;
-          --accent: #a78bfa;
-          --accent-light: #7c3aed;
+          --accent: #e2a067;
+          --accent-light: #c97b3a;
           --muted: #71717a;
           --ink: #fafafa;
           --body: #a1a1aa;
@@ -444,7 +444,9 @@ export default function PersonalityPage() {
 
         body {
           background: var(--bg);
-          font-family: 'Inter', 'Noto Sans JP', sans-serif;
+          background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+          background-size: 24px 24px;
+          font-family: 'Noto Sans JP', sans-serif;
           color: var(--body);
         }
 
@@ -454,8 +456,23 @@ export default function PersonalityPage() {
           margin: 0 auto;
           padding: 120px 40px 80px;
           text-align: center;
+          position: relative;
         }
+        .page-header::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 400px;
+          background: radial-gradient(ellipse, rgba(226,160,103,0.08) 0%, transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+        .page-header > * { position: relative; z-index: 1; }
         .page-label {
+          font-family: 'Outfit', sans-serif;
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 2px;
@@ -463,12 +480,13 @@ export default function PersonalityPage() {
           color: var(--accent);
           margin-bottom: 24px;
           display: inline-block;
-          background: rgba(167, 139, 250, 0.1);
+          background: rgba(226, 160, 103, 0.1);
           padding: 6px 16px;
           border-radius: 100px;
         }
         .page-title {
-          font-size: clamp(28px, 5vw, 52px);
+          font-family: 'Outfit', sans-serif;
+          font-size: clamp(32px, 6vw, 60px);
           font-weight: 700;
           line-height: 1.3;
           color: var(--ink);
@@ -506,24 +524,30 @@ export default function PersonalityPage() {
         }
         .section-header {
           margin-bottom: 32px;
-          display: flex;
-          align-items: baseline;
-          gap: 14px;
+          position: relative;
         }
         .section-number {
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--accent);
+          font-family: 'Outfit', sans-serif;
+          font-size: 48px;
+          font-weight: 700;
+          color: var(--ink);
+          opacity: 0.06;
+          position: absolute;
+          top: -18px;
+          left: -4px;
+          line-height: 1;
           font-variant-numeric: tabular-nums;
-          flex-shrink: 0;
+          pointer-events: none;
         }
         .section-heading {
+          font-family: 'Outfit', sans-serif;
           font-size: clamp(18px, 2.5vw, 24px);
           font-weight: 600;
           color: var(--ink);
           line-height: 1.5;
           margin-bottom: 0;
           letter-spacing: -0.01em;
+          position: relative;
         }
         /* 横並び */
         .section-layout {
@@ -535,10 +559,16 @@ export default function PersonalityPage() {
         .section-visual {
           position: sticky;
           top: 80px;
-          background: var(--surface);
-          border: 1px solid var(--border);
+          background: rgba(24,24,27,0.7);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(226,160,103,0.12);
           border-radius: 16px;
           padding: 28px;
+          transition: border-color 0.3s ease;
+        }
+        .section-visual:hover {
+          border-color: rgba(226,160,103,0.3);
         }
         .section-body {
           font-size: 15px;
@@ -555,13 +585,16 @@ export default function PersonalityPage() {
         }
         .section-point {
           margin: 24px 0 0;
-          padding: 20px 24px;
-          background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(124,58,237,0.04));
-          border: 1px solid rgba(167,139,250,0.15);
-          border-radius: 12px;
+          padding: 20px 24px 20px 28px;
+          background: radial-gradient(ellipse at 10% 50%, rgba(226,160,103,0.06) 0%, rgba(24,24,27,0.8) 70%);
+          border: 1px solid rgba(226,160,103,0.15);
+          border-left: 4px solid;
+          border-image: linear-gradient(180deg, var(--accent), var(--accent-light)) 1;
+          border-radius: 0 12px 12px 0;
+          box-shadow: inset 0 0 30px rgba(226,160,103,0.03);
         }
         .section-point p {
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 500;
           color: var(--ink);
           line-height: 1.8;
@@ -703,7 +736,7 @@ export default function PersonalityPage() {
             margin: 0 auto;
           }
           .section { padding: 48px 20px; }
-          .section-header { flex-direction: column; gap: 4px; }
+          .section-header { }
           .page-header { padding: 80px 20px 48px; }
         }
       `}</style>
