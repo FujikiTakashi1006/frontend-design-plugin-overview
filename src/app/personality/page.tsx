@@ -39,7 +39,7 @@ function R({ ok, children, d = 0 }: { ok: boolean; children: React.ReactNode; d?
 function Section01() {
   const { ref, ok } = useReveal();
   return (
-    <section className="section" ref={ref} style={{ maxWidth: 680 }}>
+    <section className="section" ref={ref} style={{ maxWidth: 700 }}>
       <R ok={ok} d={0}><p className="section-number">01</p></R>
       <R ok={ok} d={80}><h2 className="section-heading">あなたは本当に「あなた」ですか？</h2></R>
       <div className="section-body">
@@ -427,61 +427,67 @@ export default function PersonalityPage() {
   return (
     <main>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
         :root {
-          --bg: #f3efe8;
-          --surface: #faf8f5;
-          --border: #e0dbd4;
-          --accent: #8b6f47;
-          --accent-light: #c4a882;
-          --muted: #a89a8b;
-          --ink: #1a1a1a;
-          --body: #3a3632;
-          --sub: #6b6560;
-          --error: #c4574a;
+          --bg: #09090b;
+          --surface: #18181b;
+          --border: #27272a;
+          --accent: #a78bfa;
+          --accent-light: #7c3aed;
+          --muted: #71717a;
+          --ink: #fafafa;
+          --body: #a1a1aa;
+          --sub: #71717a;
+          --error: #f87171;
         }
 
         body {
           background: var(--bg);
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: 'Inter', 'Noto Sans JP', sans-serif;
           color: var(--body);
         }
 
         /* ─── Page Header ─── */
         .page-header {
-          max-width: 800px;
+          max-width: 860px;
           margin: 0 auto;
-          padding: 100px 40px 60px;
+          padding: 120px 40px 80px;
           text-align: center;
         }
         .page-label {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 12px;
-          letter-spacing: 4px;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 2px;
           text-transform: uppercase;
           color: var(--accent);
           margin-bottom: 24px;
+          display: inline-block;
+          background: rgba(167, 139, 250, 0.1);
+          padding: 6px 16px;
+          border-radius: 100px;
         }
         .page-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(26px, 4.5vw, 46px);
-          font-weight: 400;
-          line-height: 1.5;
+          font-size: clamp(28px, 5vw, 52px);
+          font-weight: 700;
+          line-height: 1.3;
           color: var(--ink);
           margin-bottom: 24px;
+          letter-spacing: -0.03em;
         }
         .page-title em {
-          font-style: italic;
-          color: var(--accent);
+          font-style: normal;
+          background: linear-gradient(135deg, var(--accent), var(--accent-light));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .page-lead {
-          font-family: 'Noto Sans JP', sans-serif;
           font-size: clamp(14px, 1.8vw, 16px);
           font-weight: 300;
           color: var(--sub);
-          line-height: 2;
-          max-width: 640px;
+          line-height: 1.9;
+          max-width: 580px;
           margin: 0 auto;
         }
 
@@ -490,36 +496,36 @@ export default function PersonalityPage() {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes scrollPulse {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 0.8; }
-        }
 
-        /* ─── Sections (図解本スタイル) ─── */
+        /* ─── Sections ─── */
         .section {
           max-width: 1060px;
           margin: 0 auto;
-          padding: 80px 40px;
+          padding: 64px 40px;
           border-top: 1px solid var(--border);
         }
         .section-header {
-          margin-bottom: 40px;
+          margin-bottom: 32px;
+          display: flex;
+          align-items: baseline;
+          gap: 14px;
         }
         .section-number {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 13px;
+          font-size: 12px;
+          font-weight: 600;
           color: var(--accent);
-          letter-spacing: 3px;
+          font-variant-numeric: tabular-nums;
+          flex-shrink: 0;
         }
         .section-heading {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(20px, 3vw, 32px);
-          font-weight: 400;
+          font-size: clamp(18px, 2.5vw, 24px);
+          font-weight: 600;
           color: var(--ink);
           line-height: 1.5;
           margin-bottom: 0;
+          letter-spacing: -0.01em;
         }
-        /* 横並びレイアウト：図解 + テキスト */
+        /* 横並び */
         .section-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -529,28 +535,30 @@ export default function PersonalityPage() {
         .section-visual {
           position: sticky;
           top: 80px;
-        }
-        .section-text {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 28px;
         }
         .section-body {
-          font-family: 'Noto Sans JP', sans-serif;
           font-size: 15px;
           font-weight: 300;
-          line-height: 2.0;
+          line-height: 1.9;
           color: var(--body);
         }
         .section-body p {
-          margin-bottom: 1.5em;
+          margin-bottom: 1.3em;
         }
         .section-body strong {
           font-weight: 500;
+          color: var(--ink);
         }
         .section-point {
-          background: var(--surface);
-          border-left: 3px solid var(--accent);
+          margin: 24px 0 0;
           padding: 20px 24px;
-          border-radius: 0 4px 4px 0;
-          margin: 32px 0;
+          background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(124,58,237,0.04));
+          border: 1px solid rgba(167,139,250,0.15);
+          border-radius: 12px;
         }
         .section-point p {
           font-size: 14px;
@@ -560,22 +568,7 @@ export default function PersonalityPage() {
           margin: 0;
         }
 
-        /* ─── Hero SVG Keyframes ─── */
-        @keyframes drawLine {
-          from { opacity: 0; stroke-dasharray: 200; stroke-dashoffset: 200; }
-          to { opacity: 0.4; stroke-dasharray: 200; stroke-dashoffset: 0; }
-        }
-        @keyframes pulse {
-          0% { opacity: 0; r: 4; }
-          50% { opacity: 0.3; r: 20; }
-          100% { opacity: 0; r: 36; }
-        }
-        @keyframes nodeAppear {
-          from { opacity: 0; transform: scale(0); }
-          to { opacity: 0.7; transform: scale(1); }
-        }
-
-        /* ─── Section 02 SVG Keyframes ─── */
+        /* ─── Keyframes ─── */
         @keyframes fadeIn { to { opacity: 1; } }
 
         /* ─── Reveal ─── */
@@ -601,24 +594,6 @@ export default function PersonalityPage() {
           animation-play-state: running;
         }
 
-        /* ─── Hero SVG Classes ─── */
-        .connection {
-          stroke: var(--accent-light);
-          stroke-width: 0.8;
-          opacity: 0;
-          animation: drawLine 2s ease forwards;
-        }
-        .pulse {
-          fill: none;
-          stroke: var(--accent);
-          stroke-width: 1;
-          opacity: 0;
-          animation: pulse 3s ease-in-out infinite;
-        }
-        .node-appear {
-          opacity: 0;
-          animation: nodeAppear 0.6s ease forwards;
-        }
 
         /* ─── Section 02 SVG Classes ─── */
         .brain-pie-bg { opacity: 0; }
@@ -713,8 +688,8 @@ export default function PersonalityPage() {
         .env-bottom { opacity: 0; }
         .svg-animate.visible .env-bottom { animation: fadeIn 0.6s ease 2.2s forwards; }
 
-        .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--border); }
-        .footer p { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
+        .footer { text-align: center; padding: 64px 24px 48px; border-top: 1px solid var(--border); }
+        .footer p { font-family: 'Noto Sans JP', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
 
         /* ─── Responsive ─── */
         @media (max-width: 860px) {
@@ -724,11 +699,12 @@ export default function PersonalityPage() {
           }
           .section-visual {
             position: static;
-            max-width: 400px;
+            max-width: 420px;
             margin: 0 auto;
           }
           .section { padding: 48px 20px; }
-          .page-header { padding: 60px 20px 40px; }
+          .section-header { flex-direction: column; gap: 4px; }
+          .page-header { padding: 80px 20px 48px; }
         }
       `}</style>
 
