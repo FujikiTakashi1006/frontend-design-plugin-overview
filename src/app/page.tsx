@@ -27,6 +27,18 @@ const articles: Article[] = [
   {
     category: "guide",
     tag: "Guide",
+    title: "Claude Opus 4.7 まとめ",
+    description:
+      "Anthropic現行最上位モデル「Opus 4.7」の特徴を editorial × technical なロングスクロールで解説。ベンチマーク比較・4つの進化・仕様まで。",
+    href: "/opus-4-7",
+    date: "2026/4/17",
+    author: "藤木崇史",
+    accent: "#f59e0b",
+    thumb: "/thumbs/opus-4-7.svg",
+  },
+  {
+    category: "guide",
+    tag: "Guide",
     title: "Claude Mythos Preview まとめ",
     description:
       "Anthropic史上最強のAIモデル「Mythos」の全貌。ベンチマーク、安全性、価格情報を神話的なビジュアルで解説。",
